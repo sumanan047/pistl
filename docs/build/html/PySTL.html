@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>PySTL package &#8212; PySTL 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script src="_static/documentation_options.js?v=2709fde1"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="pystl-package">
+<h1>PySTL package<a class="headerlink" href="#pystl-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-PySTL.core">
+<span id="pystl-core-module"></span><h2>PySTL.core module<a class="headerlink" href="#module-PySTL.core" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="PySTL.core.array_to_stl">
+<span class="sig-prename descclassname"><span class="pre">PySTL.core.</span></span><span class="sig-name descname"><span class="pre">array_to_stl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stl_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.core.array_to_stl" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Takes an array and writes the corresponding stl file using the infomormation on normal and vertices
+of triangles in the array.</p>
+</dd>
+<dt>Parameter:</dt><dd><dl class="simple">
+<dt>arr: an array of shape:</dt><dd><p>4*n + 1, 3</p>
+</dd>
+<dt>stl_name:</dt><dd><p>Name of the stl file that is to be created.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="PySTL.core.rotate">
+<span class="sig-prename descclassname"><span class="pre">PySTL.core.</span></span><span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_theta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_theta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_theta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.core.rotate" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Rotates the stl file around the angles x_theta, y_theta and z_theta.
+where x_theta is the rotation around x-axis or rotation in y-z plane and likewise.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> – The stl array to be rotated</p></li>
+<li><p><strong>x_theta</strong> – in yz plane or around x-axis</p></li>
+<li><p><strong>y_theta</strong> – in xz plane or around y-axis</p></li>
+<li><p><strong>z_theta</strong> – in xy plane or around z-axis</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Rotated stl array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="PySTL.core.stl_to_array">
+<span class="sig-prename descclassname"><span class="pre">PySTL.core.</span></span><span class="sig-name descname"><span class="pre">stl_to_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.core.stl_to_array" title="Link to this definition">¶</a></dt>
+<dd><dl>
+<dt>Description:</dt><dd><p>Reads an stl file produced by pystl and converts that into a compact numpy array of the form:
+np.array([0,0,0], [normla, vertex..], ….all the triangles).
+The shape of the array then produced is:</p>
+<blockquote>
+<div><p>4* number of traingles + 1 (first element is [0,0,0] in the array made for vstack to work.)</p>
+</div></blockquote>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stl</strong> – string filehandle for the shape.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a numpy array of the shape described in the description section of the docstring.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="PySTL.core.translate">
+<span class="sig-prename descclassname"><span class="pre">PySTL.core.</span></span><span class="sig-name descname"><span class="pre">translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.core.translate" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Takes a stl array and translates it by a provided x_offset, y_offset and z_offset.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> – stl array that is translated</p></li>
+<li><p><strong>x_offset</strong> – required distance along x-axis by which the stl has to be moved.</p></li>
+<li><p><strong>y_offset</strong> – required distance along y-axis by which the stl has to be moved.</p></li>
+<li><p><strong>z_offset</strong> – required distance along z-axis by which the stl has to be moved.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>translated stl array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-PySTL.shapes">
+<span id="pystl-shapes-module"></span><h2>PySTL.shapes module<a class="headerlink" href="#module-PySTL.shapes" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="PySTL.shapes.Cirle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PySTL.shapes.</span></span><span class="sig-name descname"><span class="pre">Cirle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Cirle" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySTL.shapes.Shape" title="PySTL.shapes.Shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shape</span></code></a></p>
+<dl class="simple">
+<dt>Description:</dt><dd><p>Creates a 2D circle.
+Special cases can be used to generate rectangle and triangles.</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PySTL.shapes.Cirle.area">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">area</span></span><a class="headerlink" href="#PySTL.shapes.Cirle.area" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Cirle.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elevation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Cirle.create" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Creates a circle with a constant z value.</p>
+</dd>
+<dt>Parmeters:</dt><dd><p>elevation: The z value or elevation of the circle. Default value is 0.0.</p>
+</dd>
+</dl>
+<p>Example:
+&gt;&gt;&gt; circle = Cicrle()
+&gt;&gt;&gt; circle.create() # creates a circle of elevation of 0.0
+&gt;&gt;&gt; circle.create(elevation=10.0) # creates the circle at z = 10.0</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Cirle.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shapename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Cirle.export" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Takes x and y cordinates from the circle function and generates a cricle stl of
+desired resolution that has 0 elevation i.e. all z values are zero.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> – string filename of the .stl file</p></li>
+<li><p><strong>shapename</strong> – name of the object that is created</p></li>
+</ul>
+</dd>
+</dl>
+<p>Example:
+&gt;&gt;&gt; circle=Cirle()
+&gt;&gt;&gt; circle.radius = 2.0
+&gt;&gt;&gt; circle.create()
+&gt;&gt;&gt; circle.visualize()
+&gt;&gt;&gt; circle.export(‘circle.stl’, circle)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="PySTL.shapes.Cirle.perimeter">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">perimeter</span></span><a class="headerlink" href="#PySTL.shapes.Cirle.perimeter" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="PySTL.shapes.Cirle.radius">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">radius</span></span><a class="headerlink" href="#PySTL.shapes.Cirle.radius" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Cirle.visualize">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Cirle.visualize" title="Link to this definition">¶</a></dt>
+<dd><p>Plots the circle using matplotlib.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PySTL.shapes.Cuboid">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PySTL.shapes.</span></span><span class="sig-name descname"><span class="pre">Cuboid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Cuboid" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySTL.shapes.Cylinder" title="PySTL.shapes.Cylinder"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cylinder</span></code></a></p>
+<p>Generates a cuboid using special case of a cylinder with changed parameters.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Cuboid.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Cuboid.create" title="Link to this definition">¶</a></dt>
+<dd><p>Inherits a cylinder and sets sides and resolution to create a cuboid.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Cuboid.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shapename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Cuboid.export" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Takes x and y cordinates from the two circles one at top and the other at bottom face
+connects them using triangles. Finally, closes the top and bottom face of the cylinder
+if the close attribute on the shape is True.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> – string filename of the .stl file</p></li>
+<li><p><strong>shapename</strong> – name of the object that is created</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Cuboid.visualize">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Cuboid.visualize" title="Link to this definition">¶</a></dt>
+<dd><p>Plots the circe using matplotlib</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PySTL.shapes.Cylinder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PySTL.shapes.</span></span><span class="sig-name descname"><span class="pre">Cylinder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Cylinder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySTL.shapes.Shape" title="PySTL.shapes.Shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shape</span></code></a></p>
+<p>Generates a cylinder for a height along the z-axis.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Cylinder.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Cylinder.create" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Creates a cylinder.</p>
+</dd>
+<dt>Parmeters:</dt><dd><p>None</p>
+</dd>
+</dl>
+<p>Example:
+&gt;&gt;&gt; cyl = Cylinder()
+&gt;&gt;&gt; cyl._height = 10.00
+&gt;&gt;&gt; cyl._top_circle_radius = 4.00
+&gt;&gt;&gt; cyl._base_circle_radius = 4.00
+&gt;&gt;&gt; cyl.resolution = 10
+&gt;&gt;&gt; cyl.close = True
+&gt;&gt;&gt; cyl.create()</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Cylinder.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shapename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Cylinder.export" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Takes x and y cordinates from the two circles one at top and the other at bottom face
+connects them using triangles. Finally, closes the top and bottom face of the cylinder
+if the close attribute on the shape is True.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> – string filename of the .stl file</p></li>
+<li><p><strong>shapename</strong> – name of the object that is created</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Cylinder.visualize">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Cylinder.visualize" title="Link to this definition">¶</a></dt>
+<dd><p>Plots the circe using matplotlib</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PySTL.shapes.Pyramid">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PySTL.shapes.</span></span><span class="sig-name descname"><span class="pre">Pyramid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Pyramid" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySTL.shapes.Tetrahedron" title="PySTL.shapes.Tetrahedron"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tetrahedron</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Pyramid.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elevation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Pyramid.create" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a tetrahedron with base elevation i.e. z</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Pyramid.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shapename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Pyramid.export" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Creates a pyramid from a circle class by chnaging the base circle
+shape and elavtion on of the center.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> – string filename of the .stl file</p></li>
+<li><p><strong>shapename</strong> – name of the object that is created.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Pyramid.visualize">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Pyramid.visualize" title="Link to this definition">¶</a></dt>
+<dd><p>Plots the circle using matplotlib.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PySTL.shapes.Shape">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PySTL.shapes.</span></span><span class="sig-name descname"><span class="pre">Shape</span></span><a class="headerlink" href="#PySTL.shapes.Shape" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for shapes.Provides a generic init and three methods
+to create, visualize and export the shapes.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Shape.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Shape.create" title="Link to this definition">¶</a></dt>
+<dd><p>Should be overwritten by child class depending on how to prodcuce that shape.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Shape.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Shape.export" title="Link to this definition">¶</a></dt>
+<dd><p>Exports the shape in desired format.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Shape.visualize">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Shape.visualize" title="Link to this definition">¶</a></dt>
+<dd><p>Plots the shape in desired backend.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PySTL.shapes.Sphere">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PySTL.shapes.</span></span><span class="sig-name descname"><span class="pre">Sphere</span></span><a class="headerlink" href="#PySTL.shapes.Sphere" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySTL.shapes.Shape" title="PySTL.shapes.Shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shape</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Sphere.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Sphere.create" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Creates the required circles of latitudes for the spheres.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>min_radius</strong> – Minimum radius of the circle on top of the sphere.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Sphere.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shapename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Sphere.export" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a stack of circles
+TODO: reduce the radius slowly as you move away from equator
+then
+TODO: connect the points in the circles, this would be critical.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Sphere.visualize">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Sphere.visualize" title="Link to this definition">¶</a></dt>
+<dd><p>Plots the shape in desired backend.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PySTL.shapes.Tetrahedron">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PySTL.shapes.</span></span><span class="sig-name descname"><span class="pre">Tetrahedron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Tetrahedron" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PySTL.shapes.Cirle" title="PySTL.shapes.Cirle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cirle</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Tetrahedron.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elevation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-2.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Tetrahedron.create" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a tetrahedron with base elevation i.e. z</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Tetrahedron.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shapename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Tetrahedron.export" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Creates a tetrahedron from a circle class by chnaging the base circle
+shape and elavtion on of the center.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> – string filename of the .stl file</p></li>
+<li><p><strong>shapename</strong> – name of the object that is created.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PySTL.shapes.Tetrahedron.visualize">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.shapes.Tetrahedron.visualize" title="Link to this definition">¶</a></dt>
+<dd><p>Plots the circle using matplotlib.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-PySTL.utilities">
+<span id="pystl-utilities-module"></span><h2>PySTL.utilities module<a class="headerlink" href="#module-PySTL.utilities" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="PySTL.utilities.find_normal">
+<span class="sig-prename descclassname"><span class="pre">PySTL.utilities.</span></span><span class="sig-name descname"><span class="pre">find_normal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.utilities.find_normal" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Finds the normal of a triangle given three points.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p1</strong> – The first point of the triangle.</p></li>
+<li><p><strong>p2</strong> – The second point of the triangle.</p></li>
+<li><p><strong>p3</strong> – The third point of the triangle.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A numpy array that is the normal for the triangle
+formed by the three points provided as the argument to the
+fucntion.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span> <span class="n">p2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">];</span> <span class="n">p3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="n">find_normal</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span>
+<span class="go">np.array([1,0,0])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="PySTL.utilities.stl_writer">
+<span class="sig-prename descclassname"><span class="pre">PySTL.utilities.</span></span><span class="sig-name descname"><span class="pre">stl_writer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stl_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">triangles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">facet_normals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PySTL.utilities.stl_writer" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Generates a stl file provided the triangles and normal to the face.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>to</strong> (<em>filename - name</em><em> of </em><em>file to write</em>) – </p></li>
+<li><p><strong>stl_anme</strong> – </p></li>
+<li><p><strong>normals</strong> (<em>facet_normals - num_triangles x 3 list</em><em> of </em><em>triangle</em>) – </p></li>
+<li><p><strong>[</strong><strong>T1</strong> (<em>triangles - List</em><em> of </em><em>triangles i.e.</em>) – where, Ti is a trinagle that is a list of three points: [[p0], [p1], [p2]],
+where, pi is a list of cordinates [x, y, z]
+or see below:
+num_triangles x 3 x 3 nested list: [ [ [p0], [p1], [p2] ] … [ [p0], [p1], [p2] ] ]</p></li>
+<li><p><strong>T2</strong> – where, Ti is a trinagle that is a list of three points: [[p0], [p1], [p2]],
+where, pi is a list of cordinates [x, y, z]
+or see below:
+num_triangles x 3 x 3 nested list: [ [ [p0], [p1], [p2] ] … [ [p0], [p1], [p2] ] ]</p></li>
+<li><p><strong>T3</strong><strong>]</strong> – where, Ti is a trinagle that is a list of three points: [[p0], [p1], [p2]],
+where, pi is a list of cordinates [x, y, z]
+or see below:
+num_triangles x 3 x 3 nested list: [ [ [p0], [p1], [p2] ] … [ [p0], [p1], [p2] ] ]</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>:param<span class="classifier">where, Ti is a trinagle that is a list of three points: [[p0], [p1], [p2]],</span></dt><dd><p>where, pi is a list of cordinates [x, y, z]
+or see below:
+num_triangles x 3 x 3 nested list: [ [ [p0], [p1], [p2] ] … [ [p0], [p1], [p2] ] ]</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>.stl file</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">write_stl</span><span class="p">(</span><span class="s1">&#39;test.stl&#39;</span><span class="p">,</span><span class="s1">&#39;tetra&#39;</span><span class="p">,</span> <span class="p">[[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+<span class="go">                            [[1, 0, 0], [0, 1, 0], [0, 0, 0]]],</span>
+<span class="go">                            facet_normals=[[0.57,0.57,0.57],</span>
+<span class="go">                                            [0,0,-1]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-PySTL">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-PySTL" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">PySTL</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Suman Saurabh.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/PySTL.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

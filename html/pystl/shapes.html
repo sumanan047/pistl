@@ -1,0 +1,1704 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>pystl.shapes API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>pystl.shapes</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># native python
+import os
+# dependecies
+import numpy as np
+import matplotlib.pyplot as plt
+# internal custom imports
+from . import utilities
+&#34;&#34;&#34;
+Module Content:
+1. Shape
+2. Circle
+3. Cylinder
+4. Cuboid
+5. Tetrahedron
+6. Pyramid - just an special example but does not close. Find out why, if not has to written 
+7. Sphere - does not produce a very very good sphere with smooth surface.
+TODO:
+8. Octahedron
+&#34;&#34;&#34;
+
+class Shape(object):
+    &#34;&#34;&#34;Base class for shapes.Provides a generic init and three methods
+    to create, visualize and export the shapes.&#34;&#34;&#34;
+    def __init__(self) -&gt; None:
+        self.x = None
+        self.y = None
+        self.z = None
+        self.name = &#34;&#34;
+
+    def create(self):
+        &#34;&#34;&#34;Should be overwritten by child class depending on how to prodcuce that shape.&#34;&#34;&#34;
+        return None
+
+    def visualize():
+        &#34;&#34;&#34;Plots the shape in desired backend.&#34;&#34;&#34;
+        return None
+
+    def export():
+        &#34;&#34;&#34;Exports the shape in desired format.&#34;&#34;&#34;
+        return None
+
+    @staticmethod
+    def _write_triangles_and_normals(triangle_list:list, normal_list:list, p1:list, p2:list, p3:list):
+        &#34;&#34;&#34;
+        Description:
+            Takes in a scheme of three points and adds to a list of triangles and normals in the stl.
+        Paremters:
+            triangle_list: list of triangles in the stl.
+            normal_list: list of normals of the traingles in the stl
+            p1, p2 and p3 are list objects that are three points on a triangle.&#34;&#34;&#34;
+        triangle_list.append([p1,p2,p3])
+        normal_list.append(list(utilities.find_normal(p1, p2, p3)))
+        return None
+
+class Cirle(Shape):
+    &#34;&#34;&#34;
+    Description:
+        Creates a 2D circle. 
+        Special cases can be used to generate rectangle and triangles.
+    &#34;&#34;&#34;
+    def __init__(self, *args, **kwargs) -&gt; None:
+        super().__init__(*args, **kwargs)
+        self._center = (0.0, 0.0)
+        self._radius = 1.0
+        self.dim = 2.0
+        self._area = np.pi*(np.power(self._radius,2))
+        self._perimeter = 2*np.pi*self._radius
+        self.resolution = 10
+
+    @property
+    def radius(self):
+        return self._radius
+    
+    @property
+    def perimeter(self):
+        return 2*np.pi*self._radius
+
+    @radius.setter
+    def radius(self, value):
+        self._radius = value
+
+    @property
+    def area(self):
+        return np.pi*(np.power(self._radius,2))
+
+    def create(self, elevation= 0.0):
+        &#34;&#34;&#34;
+        Description:
+            Creates a circle with a constant z value.
+        Parmeters:
+            elevation: The z value or elevation of the circle. Default value is 0.0.
+        Example:
+        &gt;&gt;&gt; circle = Cicrle()
+        &gt;&gt;&gt; circle.create() # creates a circle of elevation of 0.0
+        &gt;&gt;&gt; circle.create(elevation=10.0) # creates the circle at z = 10.0
+        &#34;&#34;&#34;
+        theta = np.linspace(0, 2*np.pi, self.resolution)
+        self.x = self._radius*np.cos(theta) + self._center[0]
+        self.y = self._radius*np.sin(theta) + self._center[1]
+        self.z = [elevation]*len(self.x)
+        return None
+
+    def visualize(self):
+        &#34;&#34;&#34;Plots the circle using matplotlib.&#34;&#34;&#34;
+        plt.plot(self.x, self.y)
+        plt.xlim(-2*self._radius, 2*self._radius)
+        plt.ylim(-2*self._radius, 2*self._radius)
+        plt.show()
+        return None
+
+    def export(self, filename:str, shapename:str):
+        &#34;&#34;&#34;
+        Description:
+            Takes x and y cordinates from the circle function and generates a cricle stl of
+            desired resolution that has 0 elevation i.e. all z values are zero.
+        Parameters:
+            filename: string filename of the .stl file
+            shapename: name of the object that is created
+        Example:
+        &gt;&gt;&gt; circle=Cirle()
+        &gt;&gt;&gt; circle.radius = 2.0
+        &gt;&gt;&gt; circle.create()
+        &gt;&gt;&gt; circle.visualize()
+        &gt;&gt;&gt; circle.export(&#39;circle.stl&#39;, circle)
+        &#34;&#34;&#34;
+        triangle_list = []
+        normal_list = []
+        assert(len(self.x)==len(self.y)), &#34;length of x and y should be same, found different.&#34;
+        for i in range(len(self.x)-1):
+            p1 = [0,0,self.z[i]]
+            p2 = [self.x[i], self.y[i], self.z[i]]
+            p3 = [self.x[i+1], self.y[i+1], self.z[i]]
+            self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        utilities.stl_writer(filename,shapename, triangle_list, normal_list)
+        return None
+
+class Cylinder(Shape):
+    &#34;&#34;&#34;Generates a cylinder for a height along the z-axis.&#34;&#34;&#34;
+    def __init__(self,*args, **kwargs) -&gt; None:
+        super().__init__(*args, **kwargs)
+        self._base_circle_radius = 1.00
+        self._base_circle_center = (0.0, 0.0, 0.0)
+        self._height = 1.00
+        self._top_circle_radius = 1.00
+        self._top_circle_center = (0.0, 0.0, self._height)
+        self._cylinder_center = (self._base_circle_center[0]+self._height/2, self._base_circle_center[1]+self._height/2)
+        self.dim = 3.0
+        self.resolution = 10
+        self.close = False
+
+    def create(self):
+        &#34;&#34;&#34;
+        Description:
+            Creates a cylinder.
+        Parmeters:
+            None
+        Example:
+        &gt;&gt;&gt; cyl = Cylinder()
+        &gt;&gt;&gt; cyl._height = 10.00
+        &gt;&gt;&gt; cyl._top_circle_radius = 4.00
+        &gt;&gt;&gt; cyl._base_circle_radius = 4.00
+        &gt;&gt;&gt; cyl.resolution = 10
+        &gt;&gt;&gt; cyl.close = True
+        &gt;&gt;&gt; cyl.create()
+        &#34;&#34;&#34;
+        # create the base circle
+        self.theta = np.linspace(0, 2*np.pi, self.resolution)
+        self.base_x = self._base_circle_radius*np.cos(self.theta) + self._base_circle_center[0]
+        self.base_y = self._base_circle_radius*np.sin(self.theta) + self._base_circle_center[1]
+        self.base_z = len(self.base_x)*self._base_circle_center[2]
+        # create the top circle
+        self.top_x = self._top_circle_radius*np.cos(self.theta) + self._top_circle_center[0]
+        self.top_y = self._top_circle_radius*np.sin(self.theta) + self._top_circle_center[1]
+        self.top_z = len(self.top_x)*self._top_circle_center[2]
+        return None
+
+    def visualize(self):
+        &#34;&#34;&#34;Plots the circe using matplotlib&#34;&#34;&#34;
+        # plot setting
+        fig, ax = plt.subplots(nrows=1, ncols = 1, figsize=(5, 5),subplot_kw = {&#34;projection&#34;: &#39;3d&#39;})
+        ax.view_init(elev=20, azim = 35, roll = 10)
+        # create a 2D grid for cordinates in surface plots
+        z = np.linspace(0, self._height, self.resolution)
+        theta = np.linspace(0, 2*np.pi, self.resolution)
+        theta_grid, z_grid=np.meshgrid(theta, z)
+        assert(self._base_circle_radius == self._top_circle_radius), &#34;Right now frustums cannot be visualized.&#34;
+        x_grid = self._base_circle_radius*np.cos(theta_grid) + self._base_circle_center[0]
+        y_grid = self._base_circle_radius*np.sin(theta_grid) + self._base_circle_center[1]
+        ax.plot_surface(x_grid, y_grid, z_grid)
+        plt.show()
+        return None
+
+    def export(self, filename, shapename):
+        &#34;&#34;&#34;
+        Description:
+            Takes x and y cordinates from the two circles one at top and the other at bottom face 
+            connects them using triangles. Finally, closes the top and bottom face of the cylinder
+            if the close attribute on the shape is True.
+        Parameters:
+            filename: string filename of the .stl file
+            shapename: name of the object that is created
+        &#34;&#34;&#34;
+        triangle_list = []
+        normal_list = []
+        assert(len(self.base_x)==len(self.base_y)), &#34;length of x and y should be same, found different.&#34;
+        # first set of triangles
+        for i in range(len(self.base_x)-1):
+            p1 = [self.base_x[i],self.base_y[i],self.base_z]
+            p2 = [self.top_x[i+1],self.top_y[i+1],self.top_z]
+            p3 = [self.top_x[i],self.top_y[i],self.top_z]
+            self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        # second set of triangles
+        for i in range(len(self.base_x)-1):
+            p1 = [self.base_x[i],self.base_y[i],self.base_z]
+            p2 = [self.base_x[i+1],self.base_y[i+1],self.base_z]
+            p3 = [self.top_x[i+1], self.top_y[i+1], self.top_z]
+            self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        if self.close == True:
+            # close top face
+            for i in range(len(self.top_x)-1):
+                p1 = [0,0,self.top_z]
+                p2 = [self.top_x[i], self.top_y[i], self.top_z]
+                p3 = [self.top_x[i+1], self.top_y[i+1], self.top_z]
+                self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+            # close bottom face
+            for i in range(len(self.base_x)-1):
+                p1 = [0,0,self.base_z]
+                p2 = [self.base_x[i+1], self.base_y[i+1], self.base_z]
+                p3 = [self.base_x[i], self.base_y[i], self.base_z]
+                self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        utilities.stl_writer(filename,shapename, triangle_list, normal_list)
+        return None
+
+class Cuboid(Cylinder):
+    &#34;&#34;&#34;Generates a cuboid using special case of a cylinder with changed parameters.&#34;&#34;&#34;
+    def __init__(self, *args, **kwargs) -&gt; None:
+        super().__init__(*args, **kwargs)
+        self._side_length = 1.00
+        self.resolution = 5
+        self.close = False
+
+    def _set_side(self):
+        &#34;&#34;&#34;Sets the side of the cuboid because inheriting from cylinder only sets the radius.&#34;&#34;&#34;
+        self._base_circle_radius = self._side_length/(np.sqrt(2))
+        self._top_circle_radius = self._side_length/(np.sqrt(2))
+        return None
+    
+    def _set_resolution(self):
+        &#34;&#34;&#34;Sets resolution to call cylinder class and make a cuboid.&#34;&#34;&#34;
+        self.resolution = 5
+        return None
+
+    def create(self):
+        &#34;&#34;&#34;Inherits a cylinder and sets sides and resolution to create a cuboid.&#34;&#34;&#34;
+        self._set_side()
+        self._set_resolution()
+        return super().create()
+    
+    def visualize(self):
+        return super().visualize()
+    
+    def export(self, filename, shapename):
+        return super().export(filename, shapename)
+
+class Tetrahedron(Cirle):
+    def __init__(self, *args, **kwargs) -&gt; None:
+        super().__init__(*args, **kwargs)
+        self.resolution = 4
+        self.close = True
+
+    def create(self, elevation=-2.0):
+        &#34;&#34;&#34;Creates a tetrahedron with base elevation i.e. z&#34;&#34;&#34;
+        return super().create(elevation)
+    
+    def visualize(self):
+        return super().visualize()
+    
+    def export(self, filename, shapename):
+        &#34;&#34;&#34;
+        Description:
+            Creates a tetrahedron from a circle class by chnaging the base circle
+            shape and elavtion on of the center.
+        Parameters:
+            filename: string filename of the .stl file
+            shapename: name of the object that is created.&#34;&#34;&#34;
+        triangle_list = []
+        normal_list = []
+        assert(len(self.x)==len(self.y)), &#34;length of x and y should be same, found different.&#34;
+        for i in range(len(self.x)-1):
+            p1 = [0,0,0]
+            p2 = [self.x[i], self.y[i], self.z[i]]
+            p3 = [self.x[i+1], self.y[i+1], self.z[i]]
+            self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        utilities.stl_writer(filename,shapename, triangle_list, normal_list)
+        return None
+
+class Pyramid(Tetrahedron):
+    def __init__(self, *args, **kwargs) -&gt; None:
+        super().__init__(*args, **kwargs)
+        self.resolution = 5
+        self.close = False
+
+    def create(self, elevation=-2):
+        return super().create(elevation)
+    
+    def visualize(self):
+        return super().visualize()
+    
+    def export(self, filename, shapename):
+        &#34;&#34;&#34;
+        Description:
+            Creates a pyramid from a circle class by chnaging the base circle
+            shape and elavtion on of the center.
+        Parameters:
+            filename: string filename of the .stl file
+            shapename: name of the object that is created.&#34;&#34;&#34;
+        triangle_list = []
+        normal_list = []
+        assert(len(self.x)==len(self.y)), &#34;Length of x and y should be same, found different.&#34;
+        # the dome loop
+        for i in range(len(self.x)-1):
+            p1 = [0,0,0]
+            p2 = [self.x[i], self.y[i], self.z[i]]
+            p3 = [self.x[i+1], self.y[i+1], self.z[i]]
+            self._write_triangles_and_normals(triangle_list,normal_list, p1, p2, p3)
+        # close the base
+        if self.close == True:
+            p1 = [self.x[0], self.y[0], self.z[0]]
+            p2 = [self.x[1], self.y[1], self.z[1]]
+            p3 = [self.x[2], self.y[2], self.z[2]]
+            self._write_triangles_and_normals(triangle_list,normal_list, p1, p2, p3)
+            p1 = [self.x[0], self.y[0], self.z[0]]
+            p2 = [self.x[-1], self.y[-1], self.z[-1]]
+            p3 = [self.x[-2], self.y[-2], self.z[-2]]
+            self._write_triangles_and_normals(triangle_list,normal_list, p1, p2, p3)
+        utilities.stl_writer(filename,shapename, triangle_list, normal_list)
+        return None
+
+class Sphere(Shape):
+    def __init__(self) -&gt; None:
+        super().__init__()
+        self.center = (0,0,0)
+        self.radius = 1.0
+        self.resoultion_longitude = 20
+        self.resolution_latitude = 20
+
+    def _radius_variation(self, min_radius):
+        &#34;&#34;&#34;
+        Description:
+            Internal method that sets the radius of the latitudes in the sphere.
+        Parameters:
+            min_radius:
+                Minimum radius of the circle on top of the sphere.&#34;&#34;&#34;
+        self.radius_list = []
+        lin_space = np.linspace(self.radius, min_radius, int(self.resoultion_longitude/2))
+        for l in lin_space:
+            temp_rad = np.sqrt(np.power(self.radius, 2) - np.power(l,2))
+            self.radius_list.append(temp_rad)
+        lin_space = np.linspace(min_radius, self.radius, int(self.resoultion_longitude/2))
+        for l in lin_space:
+            temp_rad = np.sqrt(np.power(self.radius, 2) - np.power(l,2))
+            self.radius_list.append(temp_rad)
+
+    def create(self, min_radius:float = 0.1):
+        &#34;&#34;&#34;
+        Description:
+            Creates the required circles of latitudes for the spheres.
+        Parameters:
+            min_radius:
+                Minimum radius of the circle on top of the sphere.&#34;&#34;&#34;
+        self.circle_list = []
+        self.latitude = np.linspace(-self.radius/1.0, self.radius/1.0, self.resoultion_longitude)
+        self._radius_variation(min_radius=min_radius)
+        for i, l in enumerate(self.latitude):
+                circle=Cirle()
+                circle.radius = self.radius_list[i]
+                circle.resolution = self.resolution_latitude
+                circle.create(elevation=l) # it looks like 1.0 but the elevation is actually l as in L.
+                self.circle_list.append(circle)
+        return None
+
+    def visualize(self):
+        return None
+
+    def export(self, filename, shapename):
+        &#34;&#34;&#34;
+        Creates a stack of circles
+        TODO: reduce the radius slowly as you move away from equator
+        then
+        TODO: connect the points in the circles, this would be critical.
+        &#34;&#34;&#34;
+        triangle_list = []
+        normal_list = []
+        # creates stack of disks
+        for j in range(len(self.circle_list)-1):
+            circle_1 = self.circle_list[j]
+            circle_2 = self.circle_list[j+1]
+            # first set of triangle
+            #  i x&gt; i+1                  &gt; circle 2
+            #  x   x
+            #  i x                       &gt; circle 1
+            for i in range(len(circle_1.x)-1):
+                p1 = [circle_1.x[i],circle_1.y[i],circle_1.z[i]]
+                p2 = [circle_2.x[i+1],circle_2.y[i+1],circle_2.z[i+1]]
+                p3 = [circle_2.x[i],circle_2.y[i],circle_2.z[i]]
+                self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+            # add next set of triangles
+            #  i x                       &gt; circle 2
+            #  x   x
+            #  i x&gt; i+1                  &gt; circle 1
+            for i in range(len(circle_1.x)-1):
+                p1 = [circle_1.x[i],circle_1.y[i],circle_1.z[i]]
+                p2 = [circle_1.x[i+1],circle_1.y[i+1],circle_1.z[i+1]]
+                p3 = [circle_2.x[i+1],circle_2.y[i+1],circle_2.z[i+1]]
+                self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        # close the top
+        end_circle = [self.circle_list[0], self.circle_list[-1]]
+        for i in range(len(end_circle)):
+            cur_circle = end_circle[i]
+            for j in range(len(cur_circle.x)-1):
+                p1 = [0,0,cur_circle.z[j]]
+                p2 = [cur_circle.x[j], cur_circle.y[j], cur_circle.z[j]]
+                p3 = [cur_circle.x[j+1], cur_circle.y[j+1], cur_circle.z[j+1]]
+                self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        utilities.stl_writer(filename,shapename, triangle_list, normal_list)
+        return None
+
+
+if __name__ == &#34;__main__&#34;:
+    if os.path.isdir(&#34;Results&#34;):
+        os.chdir(os.path.join(os.getcwd(), &#34;Results&#34;))
+    else:
+        os.mkdir(&#34;Results&#34;)
+        os.chdir(os.path.join(os.getcwd(), &#34;Results&#34;))
+    utilities.stl_writer(&#39;test.stl&#39;,&#39;tetra&#39;, [[[1, 0, 0], [0, 1, 0], [0, 0, 1]],
+                                   [[1, 0, 0], [0, 1, 0], [0, 0, 0]]], 
+                                   facet_normals=[[0.57,0.57,0.57],
+                                                  [0,0,-1]])
+    # circle test
+    circle=Cirle()
+    circle.radius = 2.0
+    circle.create()
+    circle.visualize()
+    circle.export(&#39;circle.stl&#39;, &#39;circle&#39;)
+
+    # cylinder test
+    cyl = Cylinder()
+    cyl._height = 10.00
+    cyl._top_circle_radius = 4.00
+    cyl._base_circle_radius = 4.00
+    cyl.resolution = 20
+    cyl.close = True
+    cyl.create()
+    cyl.visualize()
+    cyl.export(&#39;cyl.stl&#39;, &#39;cyl&#39;)
+
+    # cuboid test
+    cub = Cuboid()
+    cub._height = 10.00
+    cub._side_length =1.0
+    cub.close = True
+    cub.create()
+    cub.visualize()
+    cub.export(&#39;cub.stl&#39;, &#39;cub&#39;)
+
+    # tetra example
+    tetra = Tetrahedron()
+    tetra.close = True
+    tetra.create(elevation=-2.00) # set a height instead of this
+    tetra.visualize()
+    tetra.export(&#39;tetra.stl&#39;, &#39;tetra&#39;)
+
+    # pyramid example
+    pyramid = Pyramid()
+    pyramid.resolution = 5
+    pyramid.close = True
+    pyramid.create()
+    pyramid.visualize()
+    pyramid.export(&#39;pyramid.stl&#39;, &#39;pyramid&#39;)
+
+    # sphere example
+    sphere = Sphere()
+    sphere.create()
+    sphere.visualize()
+    sphere.export(&#39;sphere.stl&#39;, &#39;sphere&#39;)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="pystl.shapes.Cirle"><code class="flex name class">
+<span>class <span class="ident">Cirle</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="description">Description</h2>
+<p>Creates a 2D circle.
+Special cases can be used to generate rectangle and triangles.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Cirle(Shape):
+    &#34;&#34;&#34;
+    Description:
+        Creates a 2D circle. 
+        Special cases can be used to generate rectangle and triangles.
+    &#34;&#34;&#34;
+    def __init__(self, *args, **kwargs) -&gt; None:
+        super().__init__(*args, **kwargs)
+        self._center = (0.0, 0.0)
+        self._radius = 1.0
+        self.dim = 2.0
+        self._area = np.pi*(np.power(self._radius,2))
+        self._perimeter = 2*np.pi*self._radius
+        self.resolution = 10
+
+    @property
+    def radius(self):
+        return self._radius
+    
+    @property
+    def perimeter(self):
+        return 2*np.pi*self._radius
+
+    @radius.setter
+    def radius(self, value):
+        self._radius = value
+
+    @property
+    def area(self):
+        return np.pi*(np.power(self._radius,2))
+
+    def create(self, elevation= 0.0):
+        &#34;&#34;&#34;
+        Description:
+            Creates a circle with a constant z value.
+        Parmeters:
+            elevation: The z value or elevation of the circle. Default value is 0.0.
+        Example:
+        &gt;&gt;&gt; circle = Cicrle()
+        &gt;&gt;&gt; circle.create() # creates a circle of elevation of 0.0
+        &gt;&gt;&gt; circle.create(elevation=10.0) # creates the circle at z = 10.0
+        &#34;&#34;&#34;
+        theta = np.linspace(0, 2*np.pi, self.resolution)
+        self.x = self._radius*np.cos(theta) + self._center[0]
+        self.y = self._radius*np.sin(theta) + self._center[1]
+        self.z = [elevation]*len(self.x)
+        return None
+
+    def visualize(self):
+        &#34;&#34;&#34;Plots the circle using matplotlib.&#34;&#34;&#34;
+        plt.plot(self.x, self.y)
+        plt.xlim(-2*self._radius, 2*self._radius)
+        plt.ylim(-2*self._radius, 2*self._radius)
+        plt.show()
+        return None
+
+    def export(self, filename:str, shapename:str):
+        &#34;&#34;&#34;
+        Description:
+            Takes x and y cordinates from the circle function and generates a cricle stl of
+            desired resolution that has 0 elevation i.e. all z values are zero.
+        Parameters:
+            filename: string filename of the .stl file
+            shapename: name of the object that is created
+        Example:
+        &gt;&gt;&gt; circle=Cirle()
+        &gt;&gt;&gt; circle.radius = 2.0
+        &gt;&gt;&gt; circle.create()
+        &gt;&gt;&gt; circle.visualize()
+        &gt;&gt;&gt; circle.export(&#39;circle.stl&#39;, circle)
+        &#34;&#34;&#34;
+        triangle_list = []
+        normal_list = []
+        assert(len(self.x)==len(self.y)), &#34;length of x and y should be same, found different.&#34;
+        for i in range(len(self.x)-1):
+            p1 = [0,0,self.z[i]]
+            p2 = [self.x[i], self.y[i], self.z[i]]
+            p3 = [self.x[i+1], self.y[i+1], self.z[i]]
+            self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        utilities.stl_writer(filename,shapename, triangle_list, normal_list)
+        return None</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="pystl.shapes.Shape" href="#pystl.shapes.Shape">Shape</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="pystl.shapes.Tetrahedron" href="#pystl.shapes.Tetrahedron">Tetrahedron</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="pystl.shapes.Cirle.area"><code class="name">var <span class="ident">area</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def area(self):
+    return np.pi*(np.power(self._radius,2))</code></pre>
+</details>
+</dd>
+<dt id="pystl.shapes.Cirle.perimeter"><code class="name">var <span class="ident">perimeter</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def perimeter(self):
+    return 2*np.pi*self._radius</code></pre>
+</details>
+</dd>
+<dt id="pystl.shapes.Cirle.radius"><code class="name">var <span class="ident">radius</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def radius(self):
+    return self._radius</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="pystl.shapes.Cirle.create"><code class="name flex">
+<span>def <span class="ident">create</span></span>(<span>self, elevation=0.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="description">Description</h2>
+<p>Creates a circle with a constant z value.</p>
+<h2 id="parmeters">Parmeters</h2>
+<p>elevation: The z value or elevation of the circle. Default value is 0.0.
+Example:</p>
+<pre><code class="language-python-repl">&gt;&gt;&gt; circle = Cicrle()
+&gt;&gt;&gt; circle.create() # creates a circle of elevation of 0.0
+&gt;&gt;&gt; circle.create(elevation=10.0) # creates the circle at z = 10.0
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create(self, elevation= 0.0):
+    &#34;&#34;&#34;
+    Description:
+        Creates a circle with a constant z value.
+    Parmeters:
+        elevation: The z value or elevation of the circle. Default value is 0.0.
+    Example:
+    &gt;&gt;&gt; circle = Cicrle()
+    &gt;&gt;&gt; circle.create() # creates a circle of elevation of 0.0
+    &gt;&gt;&gt; circle.create(elevation=10.0) # creates the circle at z = 10.0
+    &#34;&#34;&#34;
+    theta = np.linspace(0, 2*np.pi, self.resolution)
+    self.x = self._radius*np.cos(theta) + self._center[0]
+    self.y = self._radius*np.sin(theta) + self._center[1]
+    self.z = [elevation]*len(self.x)
+    return None</code></pre>
+</details>
+</dd>
+<dt id="pystl.shapes.Cirle.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self, filename: str, shapename: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="description">Description</h2>
+<p>Takes x and y cordinates from the circle function and generates a cricle stl of
+desired resolution that has 0 elevation i.e. all z values are zero.</p>
+<h2 id="parameters">Parameters</h2>
+<p>filename: string filename of the .stl file
+shapename: name of the object that is created
+Example:</p>
+<pre><code class="language-python-repl">&gt;&gt;&gt; circle=Cirle()
+&gt;&gt;&gt; circle.radius = 2.0
+&gt;&gt;&gt; circle.create()
+&gt;&gt;&gt; circle.visualize()
+&gt;&gt;&gt; circle.export('circle.stl', circle)
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self, filename:str, shapename:str):
+    &#34;&#34;&#34;
+    Description:
+        Takes x and y cordinates from the circle function and generates a cricle stl of
+        desired resolution that has 0 elevation i.e. all z values are zero.
+    Parameters:
+        filename: string filename of the .stl file
+        shapename: name of the object that is created
+    Example:
+    &gt;&gt;&gt; circle=Cirle()
+    &gt;&gt;&gt; circle.radius = 2.0
+    &gt;&gt;&gt; circle.create()
+    &gt;&gt;&gt; circle.visualize()
+    &gt;&gt;&gt; circle.export(&#39;circle.stl&#39;, circle)
+    &#34;&#34;&#34;
+    triangle_list = []
+    normal_list = []
+    assert(len(self.x)==len(self.y)), &#34;length of x and y should be same, found different.&#34;
+    for i in range(len(self.x)-1):
+        p1 = [0,0,self.z[i]]
+        p2 = [self.x[i], self.y[i], self.z[i]]
+        p3 = [self.x[i+1], self.y[i+1], self.z[i]]
+        self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+    utilities.stl_writer(filename,shapename, triangle_list, normal_list)
+    return None</code></pre>
+</details>
+</dd>
+<dt id="pystl.shapes.Cirle.visualize"><code class="name flex">
+<span>def <span class="ident">visualize</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plots the circle using matplotlib.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def visualize(self):
+    &#34;&#34;&#34;Plots the circle using matplotlib.&#34;&#34;&#34;
+    plt.plot(self.x, self.y)
+    plt.xlim(-2*self._radius, 2*self._radius)
+    plt.ylim(-2*self._radius, 2*self._radius)
+    plt.show()
+    return None</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="pystl.shapes.Cuboid"><code class="flex name class">
+<span>class <span class="ident">Cuboid</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generates a cuboid using special case of a cylinder with changed parameters.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Cuboid(Cylinder):
+    &#34;&#34;&#34;Generates a cuboid using special case of a cylinder with changed parameters.&#34;&#34;&#34;
+    def __init__(self, *args, **kwargs) -&gt; None:
+        super().__init__(*args, **kwargs)
+        self._side_length = 1.00
+        self.resolution = 5
+        self.close = False
+
+    def _set_side(self):
+        &#34;&#34;&#34;Sets the side of the cuboid because inheriting from cylinder only sets the radius.&#34;&#34;&#34;
+        self._base_circle_radius = self._side_length/(np.sqrt(2))
+        self._top_circle_radius = self._side_length/(np.sqrt(2))
+        return None
+    
+    def _set_resolution(self):
+        &#34;&#34;&#34;Sets resolution to call cylinder class and make a cuboid.&#34;&#34;&#34;
+        self.resolution = 5
+        return None
+
+    def create(self):
+        &#34;&#34;&#34;Inherits a cylinder and sets sides and resolution to create a cuboid.&#34;&#34;&#34;
+        self._set_side()
+        self._set_resolution()
+        return super().create()
+    
+    def visualize(self):
+        return super().visualize()
+    
+    def export(self, filename, shapename):
+        return super().export(filename, shapename)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="pystl.shapes.Cylinder" href="#pystl.shapes.Cylinder">Cylinder</a></li>
+<li><a title="pystl.shapes.Shape" href="#pystl.shapes.Shape">Shape</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="pystl.shapes.Cuboid.create"><code class="name flex">
+<span>def <span class="ident">create</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Inherits a cylinder and sets sides and resolution to create a cuboid.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create(self):
+    &#34;&#34;&#34;Inherits a cylinder and sets sides and resolution to create a cuboid.&#34;&#34;&#34;
+    self._set_side()
+    self._set_resolution()
+    return super().create()</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="pystl.shapes.Cylinder" href="#pystl.shapes.Cylinder">Cylinder</a></b></code>:
+<ul class="hlist">
+<li><code><a title="pystl.shapes.Cylinder.export" href="#pystl.shapes.Cylinder.export">export</a></code></li>
+<li><code><a title="pystl.shapes.Cylinder.visualize" href="#pystl.shapes.Cylinder.visualize">visualize</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="pystl.shapes.Cylinder"><code class="flex name class">
+<span>class <span class="ident">Cylinder</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generates a cylinder for a height along the z-axis.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Cylinder(Shape):
+    &#34;&#34;&#34;Generates a cylinder for a height along the z-axis.&#34;&#34;&#34;
+    def __init__(self,*args, **kwargs) -&gt; None:
+        super().__init__(*args, **kwargs)
+        self._base_circle_radius = 1.00
+        self._base_circle_center = (0.0, 0.0, 0.0)
+        self._height = 1.00
+        self._top_circle_radius = 1.00
+        self._top_circle_center = (0.0, 0.0, self._height)
+        self._cylinder_center = (self._base_circle_center[0]+self._height/2, self._base_circle_center[1]+self._height/2)
+        self.dim = 3.0
+        self.resolution = 10
+        self.close = False
+
+    def create(self):
+        &#34;&#34;&#34;
+        Description:
+            Creates a cylinder.
+        Parmeters:
+            None
+        Example:
+        &gt;&gt;&gt; cyl = Cylinder()
+        &gt;&gt;&gt; cyl._height = 10.00
+        &gt;&gt;&gt; cyl._top_circle_radius = 4.00
+        &gt;&gt;&gt; cyl._base_circle_radius = 4.00
+        &gt;&gt;&gt; cyl.resolution = 10
+        &gt;&gt;&gt; cyl.close = True
+        &gt;&gt;&gt; cyl.create()
+        &#34;&#34;&#34;
+        # create the base circle
+        self.theta = np.linspace(0, 2*np.pi, self.resolution)
+        self.base_x = self._base_circle_radius*np.cos(self.theta) + self._base_circle_center[0]
+        self.base_y = self._base_circle_radius*np.sin(self.theta) + self._base_circle_center[1]
+        self.base_z = len(self.base_x)*self._base_circle_center[2]
+        # create the top circle
+        self.top_x = self._top_circle_radius*np.cos(self.theta) + self._top_circle_center[0]
+        self.top_y = self._top_circle_radius*np.sin(self.theta) + self._top_circle_center[1]
+        self.top_z = len(self.top_x)*self._top_circle_center[2]
+        return None
+
+    def visualize(self):
+        &#34;&#34;&#34;Plots the circe using matplotlib&#34;&#34;&#34;
+        # plot setting
+        fig, ax = plt.subplots(nrows=1, ncols = 1, figsize=(5, 5),subplot_kw = {&#34;projection&#34;: &#39;3d&#39;})
+        ax.view_init(elev=20, azim = 35, roll = 10)
+        # create a 2D grid for cordinates in surface plots
+        z = np.linspace(0, self._height, self.resolution)
+        theta = np.linspace(0, 2*np.pi, self.resolution)
+        theta_grid, z_grid=np.meshgrid(theta, z)
+        assert(self._base_circle_radius == self._top_circle_radius), &#34;Right now frustums cannot be visualized.&#34;
+        x_grid = self._base_circle_radius*np.cos(theta_grid) + self._base_circle_center[0]
+        y_grid = self._base_circle_radius*np.sin(theta_grid) + self._base_circle_center[1]
+        ax.plot_surface(x_grid, y_grid, z_grid)
+        plt.show()
+        return None
+
+    def export(self, filename, shapename):
+        &#34;&#34;&#34;
+        Description:
+            Takes x and y cordinates from the two circles one at top and the other at bottom face 
+            connects them using triangles. Finally, closes the top and bottom face of the cylinder
+            if the close attribute on the shape is True.
+        Parameters:
+            filename: string filename of the .stl file
+            shapename: name of the object that is created
+        &#34;&#34;&#34;
+        triangle_list = []
+        normal_list = []
+        assert(len(self.base_x)==len(self.base_y)), &#34;length of x and y should be same, found different.&#34;
+        # first set of triangles
+        for i in range(len(self.base_x)-1):
+            p1 = [self.base_x[i],self.base_y[i],self.base_z]
+            p2 = [self.top_x[i+1],self.top_y[i+1],self.top_z]
+            p3 = [self.top_x[i],self.top_y[i],self.top_z]
+            self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        # second set of triangles
+        for i in range(len(self.base_x)-1):
+            p1 = [self.base_x[i],self.base_y[i],self.base_z]
+            p2 = [self.base_x[i+1],self.base_y[i+1],self.base_z]
+            p3 = [self.top_x[i+1], self.top_y[i+1], self.top_z]
+            self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        if self.close == True:
+            # close top face
+            for i in range(len(self.top_x)-1):
+                p1 = [0,0,self.top_z]
+                p2 = [self.top_x[i], self.top_y[i], self.top_z]
+                p3 = [self.top_x[i+1], self.top_y[i+1], self.top_z]
+                self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+            # close bottom face
+            for i in range(len(self.base_x)-1):
+                p1 = [0,0,self.base_z]
+                p2 = [self.base_x[i+1], self.base_y[i+1], self.base_z]
+                p3 = [self.base_x[i], self.base_y[i], self.base_z]
+                self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        utilities.stl_writer(filename,shapename, triangle_list, normal_list)
+        return None</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="pystl.shapes.Shape" href="#pystl.shapes.Shape">Shape</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="pystl.shapes.Cuboid" href="#pystl.shapes.Cuboid">Cuboid</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="pystl.shapes.Cylinder.create"><code class="name flex">
+<span>def <span class="ident">create</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="description">Description</h2>
+<p>Creates a cylinder.</p>
+<h2 id="parmeters">Parmeters</h2>
+<p>None
+Example:</p>
+<pre><code class="language-python-repl">&gt;&gt;&gt; cyl = Cylinder()
+&gt;&gt;&gt; cyl._height = 10.00
+&gt;&gt;&gt; cyl._top_circle_radius = 4.00
+&gt;&gt;&gt; cyl._base_circle_radius = 4.00
+&gt;&gt;&gt; cyl.resolution = 10
+&gt;&gt;&gt; cyl.close = True
+&gt;&gt;&gt; cyl.create()
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create(self):
+    &#34;&#34;&#34;
+    Description:
+        Creates a cylinder.
+    Parmeters:
+        None
+    Example:
+    &gt;&gt;&gt; cyl = Cylinder()
+    &gt;&gt;&gt; cyl._height = 10.00
+    &gt;&gt;&gt; cyl._top_circle_radius = 4.00
+    &gt;&gt;&gt; cyl._base_circle_radius = 4.00
+    &gt;&gt;&gt; cyl.resolution = 10
+    &gt;&gt;&gt; cyl.close = True
+    &gt;&gt;&gt; cyl.create()
+    &#34;&#34;&#34;
+    # create the base circle
+    self.theta = np.linspace(0, 2*np.pi, self.resolution)
+    self.base_x = self._base_circle_radius*np.cos(self.theta) + self._base_circle_center[0]
+    self.base_y = self._base_circle_radius*np.sin(self.theta) + self._base_circle_center[1]
+    self.base_z = len(self.base_x)*self._base_circle_center[2]
+    # create the top circle
+    self.top_x = self._top_circle_radius*np.cos(self.theta) + self._top_circle_center[0]
+    self.top_y = self._top_circle_radius*np.sin(self.theta) + self._top_circle_center[1]
+    self.top_z = len(self.top_x)*self._top_circle_center[2]
+    return None</code></pre>
+</details>
+</dd>
+<dt id="pystl.shapes.Cylinder.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self, filename, shapename)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="description">Description</h2>
+<p>Takes x and y cordinates from the two circles one at top and the other at bottom face
+connects them using triangles. Finally, closes the top and bottom face of the cylinder
+if the close attribute on the shape is True.</p>
+<h2 id="parameters">Parameters</h2>
+<p>filename: string filename of the .stl file
+shapename: name of the object that is created</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self, filename, shapename):
+    &#34;&#34;&#34;
+    Description:
+        Takes x and y cordinates from the two circles one at top and the other at bottom face 
+        connects them using triangles. Finally, closes the top and bottom face of the cylinder
+        if the close attribute on the shape is True.
+    Parameters:
+        filename: string filename of the .stl file
+        shapename: name of the object that is created
+    &#34;&#34;&#34;
+    triangle_list = []
+    normal_list = []
+    assert(len(self.base_x)==len(self.base_y)), &#34;length of x and y should be same, found different.&#34;
+    # first set of triangles
+    for i in range(len(self.base_x)-1):
+        p1 = [self.base_x[i],self.base_y[i],self.base_z]
+        p2 = [self.top_x[i+1],self.top_y[i+1],self.top_z]
+        p3 = [self.top_x[i],self.top_y[i],self.top_z]
+        self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+    # second set of triangles
+    for i in range(len(self.base_x)-1):
+        p1 = [self.base_x[i],self.base_y[i],self.base_z]
+        p2 = [self.base_x[i+1],self.base_y[i+1],self.base_z]
+        p3 = [self.top_x[i+1], self.top_y[i+1], self.top_z]
+        self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+    if self.close == True:
+        # close top face
+        for i in range(len(self.top_x)-1):
+            p1 = [0,0,self.top_z]
+            p2 = [self.top_x[i], self.top_y[i], self.top_z]
+            p3 = [self.top_x[i+1], self.top_y[i+1], self.top_z]
+            self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        # close bottom face
+        for i in range(len(self.base_x)-1):
+            p1 = [0,0,self.base_z]
+            p2 = [self.base_x[i+1], self.base_y[i+1], self.base_z]
+            p3 = [self.base_x[i], self.base_y[i], self.base_z]
+            self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+    utilities.stl_writer(filename,shapename, triangle_list, normal_list)
+    return None</code></pre>
+</details>
+</dd>
+<dt id="pystl.shapes.Cylinder.visualize"><code class="name flex">
+<span>def <span class="ident">visualize</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plots the circe using matplotlib</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def visualize(self):
+    &#34;&#34;&#34;Plots the circe using matplotlib&#34;&#34;&#34;
+    # plot setting
+    fig, ax = plt.subplots(nrows=1, ncols = 1, figsize=(5, 5),subplot_kw = {&#34;projection&#34;: &#39;3d&#39;})
+    ax.view_init(elev=20, azim = 35, roll = 10)
+    # create a 2D grid for cordinates in surface plots
+    z = np.linspace(0, self._height, self.resolution)
+    theta = np.linspace(0, 2*np.pi, self.resolution)
+    theta_grid, z_grid=np.meshgrid(theta, z)
+    assert(self._base_circle_radius == self._top_circle_radius), &#34;Right now frustums cannot be visualized.&#34;
+    x_grid = self._base_circle_radius*np.cos(theta_grid) + self._base_circle_center[0]
+    y_grid = self._base_circle_radius*np.sin(theta_grid) + self._base_circle_center[1]
+    ax.plot_surface(x_grid, y_grid, z_grid)
+    plt.show()
+    return None</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="pystl.shapes.Pyramid"><code class="flex name class">
+<span>class <span class="ident">Pyramid</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="description">Description</h2>
+<p>Creates a 2D circle.
+Special cases can be used to generate rectangle and triangles.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Pyramid(Tetrahedron):
+    def __init__(self, *args, **kwargs) -&gt; None:
+        super().__init__(*args, **kwargs)
+        self.resolution = 5
+        self.close = False
+
+    def create(self, elevation=-2):
+        return super().create(elevation)
+    
+    def visualize(self):
+        return super().visualize()
+    
+    def export(self, filename, shapename):
+        &#34;&#34;&#34;
+        Description:
+            Creates a pyramid from a circle class by chnaging the base circle
+            shape and elavtion on of the center.
+        Parameters:
+            filename: string filename of the .stl file
+            shapename: name of the object that is created.&#34;&#34;&#34;
+        triangle_list = []
+        normal_list = []
+        assert(len(self.x)==len(self.y)), &#34;Length of x and y should be same, found different.&#34;
+        # the dome loop
+        for i in range(len(self.x)-1):
+            p1 = [0,0,0]
+            p2 = [self.x[i], self.y[i], self.z[i]]
+            p3 = [self.x[i+1], self.y[i+1], self.z[i]]
+            self._write_triangles_and_normals(triangle_list,normal_list, p1, p2, p3)
+        # close the base
+        if self.close == True:
+            p1 = [self.x[0], self.y[0], self.z[0]]
+            p2 = [self.x[1], self.y[1], self.z[1]]
+            p3 = [self.x[2], self.y[2], self.z[2]]
+            self._write_triangles_and_normals(triangle_list,normal_list, p1, p2, p3)
+            p1 = [self.x[0], self.y[0], self.z[0]]
+            p2 = [self.x[-1], self.y[-1], self.z[-1]]
+            p3 = [self.x[-2], self.y[-2], self.z[-2]]
+            self._write_triangles_and_normals(triangle_list,normal_list, p1, p2, p3)
+        utilities.stl_writer(filename,shapename, triangle_list, normal_list)
+        return None</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="pystl.shapes.Tetrahedron" href="#pystl.shapes.Tetrahedron">Tetrahedron</a></li>
+<li><a title="pystl.shapes.Cirle" href="#pystl.shapes.Cirle">Cirle</a></li>
+<li><a title="pystl.shapes.Shape" href="#pystl.shapes.Shape">Shape</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="pystl.shapes.Pyramid.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self, filename, shapename)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="description">Description</h2>
+<p>Creates a pyramid from a circle class by chnaging the base circle
+shape and elavtion on of the center.</p>
+<h2 id="parameters">Parameters</h2>
+<p>filename: string filename of the .stl file
+shapename: name of the object that is created.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self, filename, shapename):
+    &#34;&#34;&#34;
+    Description:
+        Creates a pyramid from a circle class by chnaging the base circle
+        shape and elavtion on of the center.
+    Parameters:
+        filename: string filename of the .stl file
+        shapename: name of the object that is created.&#34;&#34;&#34;
+    triangle_list = []
+    normal_list = []
+    assert(len(self.x)==len(self.y)), &#34;Length of x and y should be same, found different.&#34;
+    # the dome loop
+    for i in range(len(self.x)-1):
+        p1 = [0,0,0]
+        p2 = [self.x[i], self.y[i], self.z[i]]
+        p3 = [self.x[i+1], self.y[i+1], self.z[i]]
+        self._write_triangles_and_normals(triangle_list,normal_list, p1, p2, p3)
+    # close the base
+    if self.close == True:
+        p1 = [self.x[0], self.y[0], self.z[0]]
+        p2 = [self.x[1], self.y[1], self.z[1]]
+        p3 = [self.x[2], self.y[2], self.z[2]]
+        self._write_triangles_and_normals(triangle_list,normal_list, p1, p2, p3)
+        p1 = [self.x[0], self.y[0], self.z[0]]
+        p2 = [self.x[-1], self.y[-1], self.z[-1]]
+        p3 = [self.x[-2], self.y[-2], self.z[-2]]
+        self._write_triangles_and_normals(triangle_list,normal_list, p1, p2, p3)
+    utilities.stl_writer(filename,shapename, triangle_list, normal_list)
+    return None</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="pystl.shapes.Tetrahedron" href="#pystl.shapes.Tetrahedron">Tetrahedron</a></b></code>:
+<ul class="hlist">
+<li><code><a title="pystl.shapes.Tetrahedron.create" href="#pystl.shapes.Tetrahedron.create">create</a></code></li>
+<li><code><a title="pystl.shapes.Tetrahedron.visualize" href="#pystl.shapes.Cirle.visualize">visualize</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="pystl.shapes.Shape"><code class="flex name class">
+<span>class <span class="ident">Shape</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for shapes.Provides a generic init and three methods
+to create, visualize and export the shapes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Shape(object):
+    &#34;&#34;&#34;Base class for shapes.Provides a generic init and three methods
+    to create, visualize and export the shapes.&#34;&#34;&#34;
+    def __init__(self) -&gt; None:
+        self.x = None
+        self.y = None
+        self.z = None
+        self.name = &#34;&#34;
+
+    def create(self):
+        &#34;&#34;&#34;Should be overwritten by child class depending on how to prodcuce that shape.&#34;&#34;&#34;
+        return None
+
+    def visualize():
+        &#34;&#34;&#34;Plots the shape in desired backend.&#34;&#34;&#34;
+        return None
+
+    def export():
+        &#34;&#34;&#34;Exports the shape in desired format.&#34;&#34;&#34;
+        return None
+
+    @staticmethod
+    def _write_triangles_and_normals(triangle_list:list, normal_list:list, p1:list, p2:list, p3:list):
+        &#34;&#34;&#34;
+        Description:
+            Takes in a scheme of three points and adds to a list of triangles and normals in the stl.
+        Paremters:
+            triangle_list: list of triangles in the stl.
+            normal_list: list of normals of the traingles in the stl
+            p1, p2 and p3 are list objects that are three points on a triangle.&#34;&#34;&#34;
+        triangle_list.append([p1,p2,p3])
+        normal_list.append(list(utilities.find_normal(p1, p2, p3)))
+        return None</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="pystl.shapes.Cirle" href="#pystl.shapes.Cirle">Cirle</a></li>
+<li><a title="pystl.shapes.Cylinder" href="#pystl.shapes.Cylinder">Cylinder</a></li>
+<li><a title="pystl.shapes.Sphere" href="#pystl.shapes.Sphere">Sphere</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="pystl.shapes.Shape.create"><code class="name flex">
+<span>def <span class="ident">create</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Should be overwritten by child class depending on how to prodcuce that shape.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create(self):
+    &#34;&#34;&#34;Should be overwritten by child class depending on how to prodcuce that shape.&#34;&#34;&#34;
+    return None</code></pre>
+</details>
+</dd>
+<dt id="pystl.shapes.Shape.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Exports the shape in desired format.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export():
+    &#34;&#34;&#34;Exports the shape in desired format.&#34;&#34;&#34;
+    return None</code></pre>
+</details>
+</dd>
+<dt id="pystl.shapes.Shape.visualize"><code class="name flex">
+<span>def <span class="ident">visualize</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plots the shape in desired backend.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def visualize():
+    &#34;&#34;&#34;Plots the shape in desired backend.&#34;&#34;&#34;
+    return None</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="pystl.shapes.Sphere"><code class="flex name class">
+<span>class <span class="ident">Sphere</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for shapes.Provides a generic init and three methods
+to create, visualize and export the shapes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Sphere(Shape):
+    def __init__(self) -&gt; None:
+        super().__init__()
+        self.center = (0,0,0)
+        self.radius = 1.0
+        self.resoultion_longitude = 20
+        self.resolution_latitude = 20
+
+    def _radius_variation(self, min_radius):
+        &#34;&#34;&#34;
+        Description:
+            Internal method that sets the radius of the latitudes in the sphere.
+        Parameters:
+            min_radius:
+                Minimum radius of the circle on top of the sphere.&#34;&#34;&#34;
+        self.radius_list = []
+        lin_space = np.linspace(self.radius, min_radius, int(self.resoultion_longitude/2))
+        for l in lin_space:
+            temp_rad = np.sqrt(np.power(self.radius, 2) - np.power(l,2))
+            self.radius_list.append(temp_rad)
+        lin_space = np.linspace(min_radius, self.radius, int(self.resoultion_longitude/2))
+        for l in lin_space:
+            temp_rad = np.sqrt(np.power(self.radius, 2) - np.power(l,2))
+            self.radius_list.append(temp_rad)
+
+    def create(self, min_radius:float = 0.1):
+        &#34;&#34;&#34;
+        Description:
+            Creates the required circles of latitudes for the spheres.
+        Parameters:
+            min_radius:
+                Minimum radius of the circle on top of the sphere.&#34;&#34;&#34;
+        self.circle_list = []
+        self.latitude = np.linspace(-self.radius/1.0, self.radius/1.0, self.resoultion_longitude)
+        self._radius_variation(min_radius=min_radius)
+        for i, l in enumerate(self.latitude):
+                circle=Cirle()
+                circle.radius = self.radius_list[i]
+                circle.resolution = self.resolution_latitude
+                circle.create(elevation=l) # it looks like 1.0 but the elevation is actually l as in L.
+                self.circle_list.append(circle)
+        return None
+
+    def visualize(self):
+        return None
+
+    def export(self, filename, shapename):
+        &#34;&#34;&#34;
+        Creates a stack of circles
+        TODO: reduce the radius slowly as you move away from equator
+        then
+        TODO: connect the points in the circles, this would be critical.
+        &#34;&#34;&#34;
+        triangle_list = []
+        normal_list = []
+        # creates stack of disks
+        for j in range(len(self.circle_list)-1):
+            circle_1 = self.circle_list[j]
+            circle_2 = self.circle_list[j+1]
+            # first set of triangle
+            #  i x&gt; i+1                  &gt; circle 2
+            #  x   x
+            #  i x                       &gt; circle 1
+            for i in range(len(circle_1.x)-1):
+                p1 = [circle_1.x[i],circle_1.y[i],circle_1.z[i]]
+                p2 = [circle_2.x[i+1],circle_2.y[i+1],circle_2.z[i+1]]
+                p3 = [circle_2.x[i],circle_2.y[i],circle_2.z[i]]
+                self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+            # add next set of triangles
+            #  i x                       &gt; circle 2
+            #  x   x
+            #  i x&gt; i+1                  &gt; circle 1
+            for i in range(len(circle_1.x)-1):
+                p1 = [circle_1.x[i],circle_1.y[i],circle_1.z[i]]
+                p2 = [circle_1.x[i+1],circle_1.y[i+1],circle_1.z[i+1]]
+                p3 = [circle_2.x[i+1],circle_2.y[i+1],circle_2.z[i+1]]
+                self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        # close the top
+        end_circle = [self.circle_list[0], self.circle_list[-1]]
+        for i in range(len(end_circle)):
+            cur_circle = end_circle[i]
+            for j in range(len(cur_circle.x)-1):
+                p1 = [0,0,cur_circle.z[j]]
+                p2 = [cur_circle.x[j], cur_circle.y[j], cur_circle.z[j]]
+                p3 = [cur_circle.x[j+1], cur_circle.y[j+1], cur_circle.z[j+1]]
+                self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        utilities.stl_writer(filename,shapename, triangle_list, normal_list)
+        return None</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="pystl.shapes.Shape" href="#pystl.shapes.Shape">Shape</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="pystl.shapes.Sphere.create"><code class="name flex">
+<span>def <span class="ident">create</span></span>(<span>self, min_radius: float = 0.1)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="description">Description</h2>
+<p>Creates the required circles of latitudes for the spheres.</p>
+<h2 id="parameters">Parameters</h2>
+<p>min_radius:
+Minimum radius of the circle on top of the sphere.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create(self, min_radius:float = 0.1):
+    &#34;&#34;&#34;
+    Description:
+        Creates the required circles of latitudes for the spheres.
+    Parameters:
+        min_radius:
+            Minimum radius of the circle on top of the sphere.&#34;&#34;&#34;
+    self.circle_list = []
+    self.latitude = np.linspace(-self.radius/1.0, self.radius/1.0, self.resoultion_longitude)
+    self._radius_variation(min_radius=min_radius)
+    for i, l in enumerate(self.latitude):
+            circle=Cirle()
+            circle.radius = self.radius_list[i]
+            circle.resolution = self.resolution_latitude
+            circle.create(elevation=l) # it looks like 1.0 but the elevation is actually l as in L.
+            self.circle_list.append(circle)
+    return None</code></pre>
+</details>
+</dd>
+<dt id="pystl.shapes.Sphere.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self, filename, shapename)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a stack of circles
+TODO: reduce the radius slowly as you move away from equator
+then
+TODO: connect the points in the circles, this would be critical.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self, filename, shapename):
+    &#34;&#34;&#34;
+    Creates a stack of circles
+    TODO: reduce the radius slowly as you move away from equator
+    then
+    TODO: connect the points in the circles, this would be critical.
+    &#34;&#34;&#34;
+    triangle_list = []
+    normal_list = []
+    # creates stack of disks
+    for j in range(len(self.circle_list)-1):
+        circle_1 = self.circle_list[j]
+        circle_2 = self.circle_list[j+1]
+        # first set of triangle
+        #  i x&gt; i+1                  &gt; circle 2
+        #  x   x
+        #  i x                       &gt; circle 1
+        for i in range(len(circle_1.x)-1):
+            p1 = [circle_1.x[i],circle_1.y[i],circle_1.z[i]]
+            p2 = [circle_2.x[i+1],circle_2.y[i+1],circle_2.z[i+1]]
+            p3 = [circle_2.x[i],circle_2.y[i],circle_2.z[i]]
+            self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        # add next set of triangles
+        #  i x                       &gt; circle 2
+        #  x   x
+        #  i x&gt; i+1                  &gt; circle 1
+        for i in range(len(circle_1.x)-1):
+            p1 = [circle_1.x[i],circle_1.y[i],circle_1.z[i]]
+            p2 = [circle_1.x[i+1],circle_1.y[i+1],circle_1.z[i+1]]
+            p3 = [circle_2.x[i+1],circle_2.y[i+1],circle_2.z[i+1]]
+            self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+    # close the top
+    end_circle = [self.circle_list[0], self.circle_list[-1]]
+    for i in range(len(end_circle)):
+        cur_circle = end_circle[i]
+        for j in range(len(cur_circle.x)-1):
+            p1 = [0,0,cur_circle.z[j]]
+            p2 = [cur_circle.x[j], cur_circle.y[j], cur_circle.z[j]]
+            p3 = [cur_circle.x[j+1], cur_circle.y[j+1], cur_circle.z[j+1]]
+            self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+    utilities.stl_writer(filename,shapename, triangle_list, normal_list)
+    return None</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="pystl.shapes.Shape" href="#pystl.shapes.Shape">Shape</a></b></code>:
+<ul class="hlist">
+<li><code><a title="pystl.shapes.Shape.visualize" href="#pystl.shapes.Shape.visualize">visualize</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="pystl.shapes.Tetrahedron"><code class="flex name class">
+<span>class <span class="ident">Tetrahedron</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="description">Description</h2>
+<p>Creates a 2D circle.
+Special cases can be used to generate rectangle and triangles.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Tetrahedron(Cirle):
+    def __init__(self, *args, **kwargs) -&gt; None:
+        super().__init__(*args, **kwargs)
+        self.resolution = 4
+        self.close = True
+
+    def create(self, elevation=-2.0):
+        &#34;&#34;&#34;Creates a tetrahedron with base elevation i.e. z&#34;&#34;&#34;
+        return super().create(elevation)
+    
+    def visualize(self):
+        return super().visualize()
+    
+    def export(self, filename, shapename):
+        &#34;&#34;&#34;
+        Description:
+            Creates a tetrahedron from a circle class by chnaging the base circle
+            shape and elavtion on of the center.
+        Parameters:
+            filename: string filename of the .stl file
+            shapename: name of the object that is created.&#34;&#34;&#34;
+        triangle_list = []
+        normal_list = []
+        assert(len(self.x)==len(self.y)), &#34;length of x and y should be same, found different.&#34;
+        for i in range(len(self.x)-1):
+            p1 = [0,0,0]
+            p2 = [self.x[i], self.y[i], self.z[i]]
+            p3 = [self.x[i+1], self.y[i+1], self.z[i]]
+            self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+        utilities.stl_writer(filename,shapename, triangle_list, normal_list)
+        return None</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="pystl.shapes.Cirle" href="#pystl.shapes.Cirle">Cirle</a></li>
+<li><a title="pystl.shapes.Shape" href="#pystl.shapes.Shape">Shape</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="pystl.shapes.Pyramid" href="#pystl.shapes.Pyramid">Pyramid</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="pystl.shapes.Tetrahedron.create"><code class="name flex">
+<span>def <span class="ident">create</span></span>(<span>self, elevation=-2.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a tetrahedron with base elevation i.e. z</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create(self, elevation=-2.0):
+    &#34;&#34;&#34;Creates a tetrahedron with base elevation i.e. z&#34;&#34;&#34;
+    return super().create(elevation)</code></pre>
+</details>
+</dd>
+<dt id="pystl.shapes.Tetrahedron.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self, filename, shapename)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="description">Description</h2>
+<p>Creates a tetrahedron from a circle class by chnaging the base circle
+shape and elavtion on of the center.</p>
+<h2 id="parameters">Parameters</h2>
+<p>filename: string filename of the .stl file
+shapename: name of the object that is created.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self, filename, shapename):
+    &#34;&#34;&#34;
+    Description:
+        Creates a tetrahedron from a circle class by chnaging the base circle
+        shape and elavtion on of the center.
+    Parameters:
+        filename: string filename of the .stl file
+        shapename: name of the object that is created.&#34;&#34;&#34;
+    triangle_list = []
+    normal_list = []
+    assert(len(self.x)==len(self.y)), &#34;length of x and y should be same, found different.&#34;
+    for i in range(len(self.x)-1):
+        p1 = [0,0,0]
+        p2 = [self.x[i], self.y[i], self.z[i]]
+        p3 = [self.x[i+1], self.y[i+1], self.z[i]]
+        self._write_triangles_and_normals(triangle_list, normal_list, p1, p2, p3)
+    utilities.stl_writer(filename,shapename, triangle_list, normal_list)
+    return None</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="pystl.shapes.Cirle" href="#pystl.shapes.Cirle">Cirle</a></b></code>:
+<ul class="hlist">
+<li><code><a title="pystl.shapes.Cirle.visualize" href="#pystl.shapes.Cirle.visualize">visualize</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="pystl" href="index.html">pystl</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="pystl.shapes.Cirle" href="#pystl.shapes.Cirle">Cirle</a></code></h4>
+<ul class="two-column">
+<li><code><a title="pystl.shapes.Cirle.area" href="#pystl.shapes.Cirle.area">area</a></code></li>
+<li><code><a title="pystl.shapes.Cirle.create" href="#pystl.shapes.Cirle.create">create</a></code></li>
+<li><code><a title="pystl.shapes.Cirle.export" href="#pystl.shapes.Cirle.export">export</a></code></li>
+<li><code><a title="pystl.shapes.Cirle.perimeter" href="#pystl.shapes.Cirle.perimeter">perimeter</a></code></li>
+<li><code><a title="pystl.shapes.Cirle.radius" href="#pystl.shapes.Cirle.radius">radius</a></code></li>
+<li><code><a title="pystl.shapes.Cirle.visualize" href="#pystl.shapes.Cirle.visualize">visualize</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pystl.shapes.Cuboid" href="#pystl.shapes.Cuboid">Cuboid</a></code></h4>
+<ul class="">
+<li><code><a title="pystl.shapes.Cuboid.create" href="#pystl.shapes.Cuboid.create">create</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pystl.shapes.Cylinder" href="#pystl.shapes.Cylinder">Cylinder</a></code></h4>
+<ul class="">
+<li><code><a title="pystl.shapes.Cylinder.create" href="#pystl.shapes.Cylinder.create">create</a></code></li>
+<li><code><a title="pystl.shapes.Cylinder.export" href="#pystl.shapes.Cylinder.export">export</a></code></li>
+<li><code><a title="pystl.shapes.Cylinder.visualize" href="#pystl.shapes.Cylinder.visualize">visualize</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pystl.shapes.Pyramid" href="#pystl.shapes.Pyramid">Pyramid</a></code></h4>
+<ul class="">
+<li><code><a title="pystl.shapes.Pyramid.export" href="#pystl.shapes.Pyramid.export">export</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pystl.shapes.Shape" href="#pystl.shapes.Shape">Shape</a></code></h4>
+<ul class="">
+<li><code><a title="pystl.shapes.Shape.create" href="#pystl.shapes.Shape.create">create</a></code></li>
+<li><code><a title="pystl.shapes.Shape.export" href="#pystl.shapes.Shape.export">export</a></code></li>
+<li><code><a title="pystl.shapes.Shape.visualize" href="#pystl.shapes.Shape.visualize">visualize</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pystl.shapes.Sphere" href="#pystl.shapes.Sphere">Sphere</a></code></h4>
+<ul class="">
+<li><code><a title="pystl.shapes.Sphere.create" href="#pystl.shapes.Sphere.create">create</a></code></li>
+<li><code><a title="pystl.shapes.Sphere.export" href="#pystl.shapes.Sphere.export">export</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pystl.shapes.Tetrahedron" href="#pystl.shapes.Tetrahedron">Tetrahedron</a></code></h4>
+<ul class="">
+<li><code><a title="pystl.shapes.Tetrahedron.create" href="#pystl.shapes.Tetrahedron.create">create</a></code></li>
+<li><code><a title="pystl.shapes.Tetrahedron.export" href="#pystl.shapes.Tetrahedron.export">export</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

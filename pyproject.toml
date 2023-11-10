@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "pystl"
+version = "0.1.0"
+description = "Python library to generate STL files for common shapes and geometries."
+authors = ["Suman Saurabh <sumanan047@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
