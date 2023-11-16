@@ -3,6 +3,7 @@ import os
 # dependecies
 import numpy as np
 import matplotlib.pyplot as plt
+import pyvista as pv
 # internal custom imports
 from . import utilities
 """
@@ -24,6 +25,7 @@ class Shape(object):
         self.y = None
         self.z = None
         self.name = ""
+        self.mode = None
 
     def create(self):
         """Should be overwritten by child class depending on how to prodcuce that shape."""
@@ -31,7 +33,7 @@ class Shape(object):
 
     def visualize():
         """Plots the shape in desired backend."""
-        return None
+        from pyvista.trame.ui import plotter_ui
 
     def export():
         """Exports the shape in desired format."""
@@ -58,6 +60,7 @@ class Cirle(Shape):
     """
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
+        self.name = "Circle"
         self._center = [0.0, 0.0]
         self._radius = 1.0
         self.dim = 2.0
@@ -99,12 +102,18 @@ class Cirle(Shape):
         return None
 
     def visualize(self):
-        """Plots the circle using matplotlib."""
-        plt.plot(self.x, self.y)
-        plt.xlim(-2*self._radius, 2*self._radius)
-        plt.ylim(-2*self._radius, 2*self._radius)
-        plt.show()
-        return None
+        """Plots the circle using one of the provided backends."""
+        if self.mode is None:
+            fig, ax = plt.subplots(1,1)
+            ax.set_xlim(-2*self._radius, 2*self._radius)
+            ax.set_ylim(-2*self._radius, 2*self._radius)
+            ax.set_xlabel('x-axis')
+            ax.set_ylabel('y-axis')
+            ax.set_title(f'{self.name}')
+            return ax
+        elif self.mode == "pv":
+            mesh = pv.read("Results/circle.stl")
+            return mesh
 
     def export(self, filename:str, shapename:str):
         """
@@ -136,6 +145,7 @@ class Cylinder(Shape):
     """Generates a cylinder for a height along the z-axis."""
     def __init__(self,*args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
+        self.name = "Cylinder"
         self._base_circle_radius = 1.00
         self._base_circle_center = [0.0, 0.0, 0.0]
         self._height = 1.00
@@ -173,20 +183,22 @@ class Cylinder(Shape):
         return None
 
     def visualize(self):
-        """Plots the circe using matplotlib"""
-        # plot setting
-        fig, ax = plt.subplots(nrows=1, ncols = 1, figsize=(5, 5),subplot_kw = {"projection": '3d'})
-        ax.view_init(elev=20, azim = 35, roll = 10)
-        # create a 2D grid for cordinates in surface plots
-        z = np.linspace(0, self._height, self.resolution)
-        theta = np.linspace(0, 2*np.pi, self.resolution)
-        theta_grid, z_grid=np.meshgrid(theta, z)
-        assert(self._base_circle_radius == self._top_circle_radius), "Right now frustums cannot be visualized."
-        x_grid = self._base_circle_radius*np.cos(theta_grid) + self._base_circle_center[0]
-        y_grid = self._base_circle_radius*np.sin(theta_grid) + self._base_circle_center[1]
-        ax.plot_surface(x_grid, y_grid, z_grid)
-        plt.show()
-        return None
+        """Visualize the cylinder using a backend of choice."""
+        if self.mode is None:
+            # plot setting
+            fig, ax = plt.subplots(nrows=1, ncols = 1, figsize=(5, 5),subplot_kw = {"projection": '3d'})
+            ax.view_init(elev=20, azim = 35, roll = 10)
+            # create a 2D grid for cordinates in surface plots
+            z = np.linspace(0, self._height, self.resolution)
+            theta = np.linspace(0, 2*np.pi, self.resolution)
+            theta_grid, z_grid=np.meshgrid(theta, z)
+            assert(self._base_circle_radius == self._top_circle_radius), "Right now frustums cannot be visualized."
+            x_grid = self._base_circle_radius*np.cos(theta_grid) + self._base_circle_center[0]
+            y_grid = self._base_circle_radius*np.sin(theta_grid) + self._base_circle_center[1]
+            return ax.plot_surface(x_grid, y_grid, z_grid)
+        elif self.mode == "pv":
+            mesh = pv.read('Results/cyl.stl')
+            return mesh
 
     def export(self, filename, shapename):
         """
@@ -254,8 +266,8 @@ class Cuboid(Cylinder):
         self._set_resolution()
         return super().create()
     
-    def visualize(self):
-        return super().visualize()
+    def visualize(self, mode = None):
+        return super().visualize(mode=mode)
     
     def export(self, filename, shapename):
         return super().export(filename, shapename)
@@ -341,6 +353,7 @@ class Sphere(Shape):
         self.radius = 1.0
         self.resoultion_longitude = 20
         self.resolution_latitude = 20
+        self.name = "Sphere"
 
     def _radius_variation(self, min_radius):
         """
@@ -378,14 +391,13 @@ class Sphere(Shape):
         return None
 
     def visualize(self):
-        return None
+        """Loads the stl to visualize in pyvista."""
+        mesh = pv.read('Results/sphere.stl')
+        return mesh
 
     def export(self, filename, shapename):
         """
-        Creates a stack of circles
-        TODO: reduce the radius slowly as you move away from equator
-        then
-        TODO: connect the points in the circles, this would be critical.
+        Creates a stack of circles.
         """
         triangle_list = []
         normal_list = []
