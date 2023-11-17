@@ -1,6 +1,8 @@
 import numpy as np
 # stl writer
-def stl_writer(filename:str, stl_name:str, triangles:list, facet_normals:list = []):
+
+
+def stl_writer(filename: str, stl_name: str, triangles: list, facet_normals: list = []):
     """
     Description:
         Generates a stl file provided the triangles and normal to the face.
@@ -22,19 +24,22 @@ def stl_writer(filename:str, stl_name:str, triangles:list, facet_normals:list = 
                                     facet_normals=[[0.57,0.57,0.57],
                                                     [0,0,-1]])
     """
-    with open(filename,'w') as f:
+    with open(filename, 'w') as f:
         f.write(f'solid {stl_name}')
         for i in range(0, len(triangles)):
             f.write("\n")
-            f.write(f"facet normal {facet_normals[i][0]} {facet_normals[i][1]} {facet_normals[i][2]}\n")
+            f.write(
+                f"facet normal {facet_normals[i][0]} {facet_normals[i][1]} {facet_normals[i][2]}\n")
             f.write("outer loop\n")
             for v in triangles[i]:
-                f.write("vertex {v1} {v2} {v3}\n".format(v1 = v[0], v2 = v[1], v3 = v[2]))
+                f.write("vertex {v1} {v2} {v3}\n".format(
+                    v1=v[0], v2=v[1], v3=v[2]))
             f.write("endloop\n")
             f.write("endfacet\n")
         f.write("endsolid")
 
-def find_normal(p1:list, p2:list, p3:list):
+
+def find_normal(p1: list, p2: list, p3: list):
     """
     Description:
         Finds the normal of a triangle given three points.
@@ -51,17 +56,17 @@ def find_normal(p1:list, p2:list, p3:list):
         >>> n = find_normal()
         >>> n
         np.array([1,0,0])
-    """ 
+    """
     # needs numpy array for the cross product to work
-    p1 = np.array(p1)
-    p2 = np.array(p2)
-    p3 = np.array(p3)
+    pp1 = np.array(p1)
+    pp2 = np.array(p2)
+    pp3 = np.array(p3)
     # Calculate the cross product of the vectors from p1 to p2 and p1 to p3.
-    n = np.cross(p2 - p1, p3 - p1)
+    n = np.cross(pp2 - pp1, pp3 - pp1)
     # TODO: very very bad exception handling
     try:
         # Normalize the vector.
         n = n / np.linalg.norm(n)
     except:
-        n = np.array([0,0,0])
+        n = np.array([0, 0, 0])
     return n
