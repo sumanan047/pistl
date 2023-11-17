@@ -15,7 +15,8 @@ The shape should be:
 4. scale
 """
 
-def stl_to_array(stl:str):
+
+def stl_to_array(stl: str):
     """
     Description:
         Reads an stl file produced by pystl and converts that into a compact numpy array of the form:
@@ -28,16 +29,17 @@ def stl_to_array(stl:str):
     Returns:
         a numpy array of the shape described in the description section of the docstring.
     Example:
-        >>>
-
+        >>> art = stl_to_array(stl='Results/stl_name_before_translate.stl')
+        >>> print(type(art))
+        <class numpy.ndarray>
     """
-    stl_array = np.array([0,0,0], dtype=float)
+    stl_array = np.array([0, 0, 0], dtype=float)
     with open(stl, 'r') as f:
         for line in f:
             if ('normal' or 'vertex' in line):
                 line = line.rstrip('\n')
                 strip_list = line.split(' ')[-3:]
-                if len(strip_list)>=3:# and 'object' not in strip_list:
+                if len(strip_list) >= 3:  # and 'object' not in strip_list:
                     # print(strip_list)
                     try:
                         arr = [float(l) for l in strip_list]
@@ -48,7 +50,8 @@ def stl_to_array(stl:str):
     # print("============")
     return stl_array
 
-def array_to_stl(arr:np.array, stl_name:str):
+
+def array_to_stl(arr: np.ndarray, stl_name: str):
     """
     Description:
         Takes an array and writes the corresponding stl file using the infomormation on normal and vertices
@@ -61,25 +64,30 @@ def array_to_stl(arr:np.array, stl_name:str):
     Returns:
         None
     """
-    if arr.shape[0]%4 == 0.00:
+    if arr.shape[0] % 4 == 0.00:
         arr = arr
-    else: 
+    else:
         arr = arr[1:]
-    with open(f"Results\\{stl_name}.stl", "w") as f:
+    with open(f"{stl_name}.stl", "w") as f:
         f.write(f"solid stl_name\n")
         for i in range(int(arr.shape[0]/4)):
-            f.write(f"facet normal {float(arr[4*i][0])} {float(arr[4*i][1])} {float(arr[4*i][2])}\n")
+            f.write(
+                f"facet normal {float(arr[4*i][0])} {float(arr[4*i][1])} {float(arr[4*i][2])}\n")
             f.write('outer loop\n')
-            f.write(f"vertex {float(arr[4*i+1][0])} {float(arr[4*i+1][1])} {float(arr[4*i+1][2])}\n")
-            f.write(f"vertex {float(arr[4*i+2][0])} {float(arr[4*i+2][1])} {float(arr[4*i+2][2])}\n")
-            f.write(f"vertex {float(arr[4*i+3][0])} {float(arr[4*i+3][1])} {float(arr[4*i+3][2])}\n")
+            f.write(
+                f"vertex {float(arr[4*i+1][0])} {float(arr[4*i+1][1])} {float(arr[4*i+1][2])}\n")
+            f.write(
+                f"vertex {float(arr[4*i+2][0])} {float(arr[4*i+2][1])} {float(arr[4*i+2][2])}\n")
+            f.write(
+                f"vertex {float(arr[4*i+3][0])} {float(arr[4*i+3][1])} {float(arr[4*i+3][2])}\n")
             f.write('endloop\n')
             f.write('endfacet\n')
             # print(arr[i,:])
         f.write("endsolid")
     return None
 
-def translate(arr:np.array = None, x_offset:float=0.00, y_offset:float=0.00, z_offset:float=0.00):
+
+def translate(arr: np.ndarray, x_offset: float = 0.00, y_offset: float = 0.00, z_offset: float = 0.00):
     """
     Description:
         Takes a stl array and translates it by a provided x_offset, y_offset and z_offset.
@@ -95,25 +103,26 @@ def translate(arr:np.array = None, x_offset:float=0.00, y_offset:float=0.00, z_o
     Returns:
         translated stl array
     """
-    if arr.shape[0]%4 == 0.00:
+    if arr.shape[0] % 4 == 0.00:
         arr = arr
-    else: 
+    else:
         arr = arr[1:]
     for i in range(int(arr.shape[0]/4)):
-        arr[4*i+1][0] = float(arr[4*i+1][0])+ x_offset
-        arr[4*i+2][0] = float(arr[4*i+2][0])+ x_offset
-        arr[4*i+3][0] = float(arr[4*i+3][0])+ x_offset
+        arr[4*i+1][0] = float(arr[4*i+1][0]) + x_offset
+        arr[4*i+2][0] = float(arr[4*i+2][0]) + x_offset
+        arr[4*i+3][0] = float(arr[4*i+3][0]) + x_offset
         # translate y
-        arr[4*i+1][1] = float(arr[4*i+1][1])+ y_offset
-        arr[4*i+2][1] = float(arr[4*i+2][1])+ y_offset
-        arr[4*i+3][1] = float(arr[4*i+3][1])+ y_offset
-        #translate z
-        arr[4*i+1][2] = float(arr[4*i+1][2])+ z_offset
-        arr[4*i+2][2] = float(arr[4*i+2][2])+ z_offset
-        arr[4*i+3][2] = float(arr[4*i+3][2])+ z_offset
+        arr[4*i+1][1] = float(arr[4*i+1][1]) + y_offset
+        arr[4*i+2][1] = float(arr[4*i+2][1]) + y_offset
+        arr[4*i+3][1] = float(arr[4*i+3][1]) + y_offset
+        # translate z
+        arr[4*i+1][2] = float(arr[4*i+1][2]) + z_offset
+        arr[4*i+2][2] = float(arr[4*i+2][2]) + z_offset
+        arr[4*i+3][2] = float(arr[4*i+3][2]) + z_offset
     return arr
 
-def rotate(arr:np.array = None, x_theta:float=0.00, y_theta:float=0.00, z_theta:float=0.00):
+
+def rotate(arr: np.ndarray, x_theta: float = 0.00, y_theta: float = 0.00, z_theta: float = 0.00):
     """
     Description:
         Rotates the stl file around the angles x_theta, y_theta and z_theta.
@@ -130,33 +139,33 @@ def rotate(arr:np.array = None, x_theta:float=0.00, y_theta:float=0.00, z_theta:
     Returns:
         Rotated stl array.
     """
-    x_theta=np.radians(x_theta)
-    y_theta=np.radians(y_theta)
-    z_theta=np.radians(z_theta)
+    x_theta = np.radians(x_theta)
+    y_theta = np.radians(y_theta)
+    z_theta = np.radians(z_theta)
     # Create a rotation matrix around the x-axis
     R_x = np.array([
-    [1, 0, 0],
-    [0, np.cos(x_theta), -np.sin(x_theta)],
-    [0, np.sin(x_theta), np.cos(x_theta)]
+        [1, 0, 0],
+        [0, np.cos(x_theta), -np.sin(x_theta)],
+        [0, np.sin(x_theta), np.cos(x_theta)]
     ])
 
     # Create a rotation matrix around the y-axis
     R_y = np.array([
-    [np.cos(y_theta), 0, np.sin(y_theta)],
-    [0, 1, 0],
-    [-np.sin(y_theta), 0, np.cos(y_theta)]
+        [np.cos(y_theta), 0, np.sin(y_theta)],
+        [0, 1, 0],
+        [-np.sin(y_theta), 0, np.cos(y_theta)]
     ])
 
     # Create a rotation matrix around the z-axis
     R_z = np.array([
-    [np.cos(z_theta), -np.sin(z_theta), 0],
-    [np.sin(z_theta), np.cos(z_theta), 0],
-    [0, 0, 1]
+        [np.cos(z_theta), -np.sin(z_theta), 0],
+        [np.sin(z_theta), np.cos(z_theta), 0],
+        [0, 0, 1]
     ])
-    BigR = np.dot(R_x,np.dot(R_y,R_z))
-    if arr.shape[0]%4 == 0.00:
+    BigR = np.dot(R_x, np.dot(R_y, R_z))
+    if arr.shape[0] % 4 == 0.00:
         arr = arr
-    else: 
+    else:
         arr = arr[1:]
     rotated_triangles = []
     normals = []
@@ -167,17 +176,20 @@ def rotate(arr:np.array = None, x_theta:float=0.00, y_theta:float=0.00, z_theta:
         rotated_point_1 = np.dot(BigR, point_1)
         rotated_point_2 = np.dot(BigR, point_2)
         rotated_point_3 = np.dot(BigR, point_3)
-        rotated_triangles.append([rotated_point_1, rotated_point_2, rotated_point_3])
-        n = utilities.find_normal(rotated_point_1, rotated_point_2, rotated_point_3)
+        rotated_triangles.append(
+            [rotated_point_1, rotated_point_2, rotated_point_3])
+        n = utilities.find_normal(
+            rotated_point_1, rotated_point_2, rotated_point_3)
         normals.append(n)
-    utilities.stl_writer("Results\\rotated_stl.stl", 'rotated_stl', rotated_triangles, normals)
+    utilities.stl_writer("Results\\rotated_stl.stl",
+                         'rotated_stl', rotated_triangles, normals)
     return None
 
 
 if __name__ == "__main__":
     import glob
-    file_list = glob.glob('Results\*.stl')
-    
+    file_list = glob.glob('Results/*.stl')
+
     # convert to numpy arrays from stls
     arr_stl = []
     for i, _ in enumerate(file_list):
@@ -190,8 +202,8 @@ if __name__ == "__main__":
     for arr in arr_stl:
         pass
     # print(arr_stl)
-    array_to_stl(arr=arr_stl[1],stl_name="stl_name_before_translate")
-    art = stl_to_array(stl='Results\stl_name_before_translate.stl')
+    array_to_stl(arr=arr_stl[1], stl_name="stl_name_before_translate")
+    art = stl_to_array(stl='Results/stl_name_before_translate.stl')
     trans_art = translate(arr=art, x_offset=1.00, y_offset=2.00, z_offset=1.00)
-    array_to_stl(arr=trans_art,stl_name="stl_name_after_translate")
+    array_to_stl(arr=trans_art, stl_name="stl_name_after_translate")
     rotate(art, 0, 90, 0)
