@@ -4,3 +4,4 @@
 *.json
 /.vscode
 .coverage
+*.lock
