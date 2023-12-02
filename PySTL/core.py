@@ -40,14 +40,11 @@ def stl_to_array(stl: str):
                 line = line.rstrip('\n')
                 strip_list = line.split(' ')[-3:]
                 if len(strip_list) >= 3:  # and 'object' not in strip_list:
-                    # print(strip_list)
                     try:
                         arr = [float(l) for l in strip_list]
                     except:
                         arr = [0.0 for l in strip_list]
                     stl_array = np.vstack((stl_array, arr))
-    # print(f"{stl} and the array {stl_array}")
-    # print("============")
     return stl_array
 
 
