@@ -3,3 +3,4 @@
 *.pyc
 *.json
 /.vscode
+.coverage
