@@ -2,3 +2,4 @@
 *.ipynb
 *.pyc
 *.json
+/.vscode
