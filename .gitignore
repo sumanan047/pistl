@@ -1,2 +1,11 @@
+# ignore result files and demonstration notebook
 *.stl
 *.ipynb
+*.pyc
+*.json
+/.vscode
+.coverage
+# ignore the build files
+*.lock
+*.whl
+*.gz
