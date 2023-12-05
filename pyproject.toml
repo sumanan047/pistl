@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pystl"
-version = "0.0.0"
+version = "1.0.0"
 description = "Python library to generate STL files for common shapes and geometries."
 authors = ["Suman Saurabh <sumanan047@gmail.com>"]
 readme = "README.md"
