@@ -105,7 +105,7 @@ class Circle(Shape):
         self.z = [elevation]*len(self.x)
         return None
 
-    def visualize(self):
+    def visualize(self, filename):
         """Plots the circle using one of the provided backends."""
         if self.mode is None:
             fig, ax = plt.subplots(1, 1)
@@ -116,7 +116,7 @@ class Circle(Shape):
             ax.set_title(f'{self.name}')
             return ax
         elif self.mode == "pv":
-            mesh = pv.read("Results/circle.stl")
+            mesh = pv.read(filename)
             return mesh
 
     def export(self, filename: str, shapename: str):
@@ -196,7 +196,7 @@ class Cylinder(Shape):
         self.top_z = len(self.top_x)*self._top_circle_center[2]
         return None
 
-    def visualize(self):
+    def visualize(self, filename):
         """Visualize the cylinder using a backend of choice."""
         if self.mode is None:
             # plot setting
@@ -215,7 +215,7 @@ class Cylinder(Shape):
                 np.sin(theta_grid) + self._base_circle_center[1]
             return ax.plot_surface(x_grid, y_grid, z_grid)
         elif self.mode == "pv":
-            mesh = pv.read('Results/cyl.stl')
+            mesh = pv.read(filename)
             return mesh
 
     def export(self, filename, shapename):
@@ -291,8 +291,8 @@ class Cuboid(Cylinder):
         self._set_resolution()
         return super().create()
 
-    def visualize(self, mode=None):
-        return super().visualize()
+    def visualize(self, filename):
+        return super().visualize(filename)
 
     def export(self, filename, shapename):
         return super().export(filename, shapename)
@@ -308,8 +308,8 @@ class Tetrahedron(Circle):
         """Creates a tetrahedron with base elevation i.e. z"""
         return super().create(elevation)
 
-    def visualize(self):
-        return super().visualize()
+    def visualize(self, filename):
+        return super().visualize(filename)
 
     def export(self, filename, shapename):
         """
@@ -342,8 +342,8 @@ class Pyramid(Tetrahedron):
     def create(self, elevation=-2):
         return super().create(elevation)
 
-    def visualize(self):
-        return super().visualize()
+    def visualize(self, filename):
+        return super().visualize(filename)
 
     def export(self, filename, shapename):
         """
@@ -428,9 +428,9 @@ class Sphere(Shape):
             self.circle_list.append(circle)
         return None
 
-    def visualize(self):
+    def visualize(self, filename):
         """Loads the stl to visualize in pyvista."""
-        mesh = pv.read('Results/sphere.stl')
+        mesh = pv.read(filename)
         return mesh
 
     def export(self, filename, shapename):
