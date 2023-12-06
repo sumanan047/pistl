@@ -2,10 +2,9 @@ from fnmatch import translate
 import os
 from matplotlib.pylab import rand
 import numpy as np
-from turtle import circle
 import pytest
-from PySTL.core import stl_to_array, array_to_stl, translate, rotate
-from PySTL.shapes import Circle
+from pistl.core import stl_to_array, array_to_stl, translate, rotate
+from pistl.shapes import Circle
 
 
 @pytest.fixture()

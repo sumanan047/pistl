@@ -1,9 +1,14 @@
 [tool.poetry]
-name = "pystl"
-version = "0.0.0"
+name = "pistl"
+version = "1.0.0"
 description = "Python library to generate STL files for common shapes and geometries."
 authors = ["Suman Saurabh <sumanan047@gmail.com>"]
 readme = "README.md"
+repository = "https://github.com/sumanan047/pistl"
+maintainers = [
+    "Suman Saurabh <sumanan047@gmail.com>",
+]
+license = "MIT"
 
 
 [tool.poetry.dependencies]
