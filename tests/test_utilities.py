@@ -1,7 +1,7 @@
 import pytest
 import os
 import numpy as np
-from PySTL.utilities import find_normal, stl_writer
+from pistl.utilities import find_normal, stl_writer
 
 # creating an asset for the test and need to tear it down.
 
