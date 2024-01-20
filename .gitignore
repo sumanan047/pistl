@@ -10,3 +10,5 @@
 *.lock
 *.whl
 *.gz
+# ignore coverage and other docs
+/htmlcov/
