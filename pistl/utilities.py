@@ -1,5 +1,6 @@
 import numpy as np
 # stl writer
+# find_normal
 
 
 def stl_writer(filename: str, stl_name: str, triangles: list, facet_normals: list = []):
