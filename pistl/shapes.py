@@ -29,37 +29,25 @@ class Shape(object):
         self.z = None
         self.name = ""
         self.mode = None
+        self.filename = None
+        self.shapename = None
 
     def create(self):
         """Should be overwritten by child class depending on how to prodcuce that shape."""
         return None
 
-    def visualize(self, filename):
-        """
-        Description:
-        ============
-            Plots the stl file created using one of the provided backends
-            Default is pyvista.
-
-        Parameters:
-        ===========
-            filename:str
-                path to stl file.
-        """
-        if os.path.exists(filename):
-            try:
-                mesh = pv.read(filename)
-                return mesh
-            except:
-                raise pist_exceptions.Visualization_Exceptions(
-                    "Failed to visualize the provided stl file.")
-        else:
-            raise FileExistsError(f"Could not find the provided {filename}.")
-
-    def export(self):
+    def export(self, filename: str, shapename: str):
         """Exports the shape in desired format."""
-        raise NotImplementedError(
-            "Exporting is implemented only in child Shape classes.")
+        # set the provided filename to be the exported shape
+        self.filename = filename
+        self.shapename = shapename
+
+    def visualize(self):
+        try:
+            return utilities.visualize(filename=self.filename)
+        except:
+            raise pist_exceptions.Visualization_Exceptions(
+                "Failed to visualize your shape.")
 
     @staticmethod
     def _write_triangles_and_normals(triangle_list: list, normal_list: list, p1: list, p2: list, p3: list):
@@ -130,10 +118,11 @@ class Circle(Shape):
         self.z = [elevation]*len(self.x)
         return None
 
-    def visualize(self, filename):
-        return super().visualize(filename)
+    def visualize(self):
+        return super().visualize()
 
     def export(self, filename: str, shapename: str):
+        super().export(filename=filename, shapename=shapename)
         """
         Description:
             Takes x and y cordinates from the circle function and generates a cricle stl of
@@ -210,8 +199,8 @@ class Cylinder(Shape):
         self.top_z = len(self.top_x)*self._top_circle_center[2]
         return None
 
-    def visualize(self, filename):
-        return super().visualize(filename)
+    def visualize(self):
+        return super().visualize()
 
     def export(self, filename, shapename):
         """
@@ -223,6 +212,7 @@ class Cylinder(Shape):
             filename: string filename of the .stl file
             shapename: name of the object that is created
         """
+        super().export(filename=filename, shapename=shapename)
         triangle_list = []
         normal_list = []
         assert (len(self.base_x) == len(self.base_y)
@@ -286,8 +276,8 @@ class Cuboid(Cylinder):
         self._set_resolution()
         return super().create()
 
-    def visualize(self, filename):
-        return super().visualize(filename)
+    def visualize(self):
+        return super().visualize()
 
     def export(self, filename, shapename):
         return super().export(filename, shapename)
@@ -303,8 +293,8 @@ class Tetrahedron(Circle):
         """Creates a tetrahedron with base elevation i.e. z"""
         return super().create(elevation)
 
-    def visualize(self, filename):
-        return super().visualize(filename)
+    def visualize(self):
+        return super().visualize()
 
     def export(self, filename, shapename):
         """
@@ -314,6 +304,7 @@ class Tetrahedron(Circle):
         Parameters:
             filename: string filename of the .stl file
             shapename: name of the object that is created."""
+        super().export(filename=filename, shapename=shapename)
         triangle_list = []
         normal_list = []
         assert (len(self.x) == len(self.y)
@@ -337,8 +328,8 @@ class Pyramid(Tetrahedron):
     def create(self, elevation=-2):
         return super().create(elevation)
 
-    def visualize(self, filename):
-        return super().visualize(filename)
+    def visualize(self):
+        return super().visualize()
 
     def export(self, filename, shapename):
         """
@@ -348,6 +339,7 @@ class Pyramid(Tetrahedron):
         Parameters:
             filename: string filename of the .stl file
             shapename: name of the object that is created."""
+        super().export(filename=filename, shapename=shapename)
         triangle_list = []
         normal_list = []
         assert (len(self.x) == len(self.y)
@@ -423,13 +415,14 @@ class Sphere(Shape):
             self.circle_list.append(circle)
         return None
 
-    def visualize(self, filename):
-        return super().visualize(filename)
+    def visualize(self):
+        return super().visualize()
 
     def export(self, filename, shapename):
         """
         Creates a stack of circles.
         """
+        super().export(filename=filename, shapename=shapename)
         triangle_list = []
         normal_list = []
         # creates stack of disks
