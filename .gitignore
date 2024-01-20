@@ -1,4 +1,5 @@
 # ignore result files and demonstration notebook
+*.stp
 *.stl
 *.ipynb
 *.pyc
