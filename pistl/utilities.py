@@ -1,4 +1,7 @@
 import numpy as np
+import os
+import pyvista as pv
+from . import pist_exceptions
 # stl writer
 # find_normal
 
@@ -71,3 +74,26 @@ def find_normal(p1: list, p2: list, p3: list):
     except:
         n = np.array([0, 0, 0])
     return n
+
+
+def visualize(filename):
+    """
+    Description:
+    ============
+        Plots the stl file created using one of the provided backends
+        Default is pyvista.
+
+    Parameters:
+    ===========
+        filename:str
+            path to stl file.
+    """
+    if os.path.exists(filename):
+        try:
+            mesh = pv.read(filename)
+            return mesh
+        except:
+            raise pist_exceptions.Visualization_Exceptions(
+                "Failed to visualize the provided stl file.")
+    else:
+        raise FileExistsError(f"Could not find the provided {filename}.")
