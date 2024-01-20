@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import pyvista as pv
 # internal custom imports
-from . import utilities
+from . import utilities, pist_exceptions
 """
 Module Content:
 1. Shape
@@ -34,12 +34,32 @@ class Shape(object):
         """Should be overwritten by child class depending on how to prodcuce that shape."""
         return None
 
-    def visualize(self):
-        """Plots the shape in desired backend."""
+    def visualize(self, filename):
+        """
+        Description:
+        ============
+            Plots the stl file created using one of the provided backends
+            Default is pyvista.
+
+        Parameters:
+        ===========
+            filename:str
+                path to stl file.
+        """
+        if os.path.exists(filename):
+            try:
+                mesh = pv.read(filename)
+                return mesh
+            except:
+                raise pist_exceptions.Visualization_Exceptions(
+                    "Failed to visualize the provided stl file.")
+        else:
+            raise FileExistsError(f"Could not find the provided {filename}.")
 
     def export(self):
         """Exports the shape in desired format."""
-        return None
+        raise NotImplementedError(
+            "Exporting is implemented only in child Shape classes.")
 
     @staticmethod
     def _write_triangles_and_normals(triangle_list: list, normal_list: list, p1: list, p2: list, p3: list):
@@ -91,11 +111,16 @@ class Circle(Shape):
     def create(self, elevation=0.0):
         """
         Description:
+        ============
             Creates a circle with a constant z value.
+
         Parmeters:
+        ==========
             elevation: The z value or elevation of the circle. Default value is 0.0.
+
         Example:
-        >>> circle = Cicrle()
+        ========
+        >>> circle = Cicrle() # if no arguments are provided, it creates a circle with center (0,0) and radius 1.0.
         >>> circle.create() # creates a circle of elevation of 0.0
         >>> circle.create(elevation=10.0) # creates the circle at z = 10.0
         """
@@ -106,18 +131,7 @@ class Circle(Shape):
         return None
 
     def visualize(self, filename):
-        """Plots the circle using one of the provided backends."""
-        if self.mode is None:
-            fig, ax = plt.subplots(1, 1)
-            ax.set_xlim(-2*self._radius, 2*self._radius)
-            ax.set_ylim(-2*self._radius, 2*self._radius)
-            ax.set_xlabel('x-axis')
-            ax.set_ylabel('y-axis')
-            ax.set_title(f'{self.name}')
-            return ax
-        elif self.mode == "pv":
-            mesh = pv.read(filename)
-            return mesh
+        return super().visualize(filename)
 
     def export(self, filename: str, shapename: str):
         """
@@ -197,26 +211,7 @@ class Cylinder(Shape):
         return None
 
     def visualize(self, filename):
-        """Visualize the cylinder using a backend of choice."""
-        if self.mode is None:
-            # plot setting
-            f1 = plt.figure()
-            ax = f1.add_subplot(1, 1, 1, projection=Axes3D.name)
-            ax.view_init(elev=20, azim=35, roll=10)
-            # create a 2D grid for cordinates in surface plots
-            z = np.linspace(0, self._height, self.resolution)
-            theta = np.linspace(0, 2*np.pi, self.resolution)
-            theta_grid, z_grid = np.meshgrid(theta, z)
-            assert (self._base_circle_radius ==
-                    self._top_circle_radius), "Right now frustums cannot be visualized."
-            x_grid = self._base_circle_radius * \
-                np.cos(theta_grid) + self._base_circle_center[0]
-            y_grid = self._base_circle_radius * \
-                np.sin(theta_grid) + self._base_circle_center[1]
-            return ax.plot_surface(x_grid, y_grid, z_grid)
-        elif self.mode == "pv":
-            mesh = pv.read(filename)
-            return mesh
+        return super().visualize(filename)
 
     def export(self, filename, shapename):
         """
@@ -429,9 +424,7 @@ class Sphere(Shape):
         return None
 
     def visualize(self, filename):
-        """Loads the stl to visualize in pyvista."""
-        mesh = pv.read(filename)
-        return mesh
+        return super().visualize(filename)
 
     def export(self, filename, shapename):
         """
@@ -475,62 +468,3 @@ class Sphere(Shape):
                     triangle_list, normal_list, p1, p2, p3)
         utilities.stl_writer(filename, shapename, triangle_list, normal_list)
         return None
-
-
-if __name__ == "__main__":
-    if os.path.isdir("Results"):
-        os.chdir(os.path.join(os.getcwd(), "Results"))
-    else:
-        os.mkdir("Results")
-        os.chdir(os.path.join(os.getcwd(), "Results"))
-    utilities.stl_writer('test.stl', 'tetra', [[[1, 0, 0], [0, 1, 0], [0, 0, 1]],
-                                               [[1, 0, 0], [0, 1, 0], [0, 0, 0]]],
-                         facet_normals=[[0.57, 0.57, 0.57],
-                                        [0, 0, -1]])
-    # circle test
-    circle = Circle()
-    circle.radius = 2.0
-    circle.create()
-    circle.visualize()
-    circle.export('circle.stl', 'circle')
-
-    # cylinder test
-    cyl = Cylinder()
-    cyl._height = 10.00
-    cyl._top_circle_radius = 4.00
-    cyl._base_circle_radius = 4.00
-    cyl.resolution = 20
-    cyl.close = True
-    cyl.create()
-    cyl.visualize()
-    cyl.export('cyl.stl', 'cyl')
-
-    # cuboid test
-    cub = Cuboid()
-    cub._height = 10.00
-    cub._side_length = 1.0
-    cub.close = True
-    cub.create()
-    cub.visualize()
-    cub.export('cub.stl', 'cub')
-
-    # tetra example
-    tetra = Tetrahedron()
-    tetra.close = True
-    tetra.create(elevation=-2.00)  # set a height instead of this
-    tetra.visualize()
-    tetra.export('tetra.stl', 'tetra')
-
-    # pyramid example
-    pyramid = Pyramid()
-    pyramid.resolution = 5
-    pyramid.close = True
-    pyramid.create()
-    pyramid.visualize()
-    pyramid.export('pyramid.stl', 'pyramid')
-
-    # sphere example
-    sphere = Sphere()
-    sphere.create()
-    sphere.visualize()
-    sphere.export('sphere.stl', 'sphere')
