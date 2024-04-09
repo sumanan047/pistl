@@ -411,10 +411,21 @@ class Sphere(Shape):
     def create(self, min_radius: float = 0.1):
         """
         Description:
+        ============
             Creates the required circles of latitudes for the spheres.
+        
         Parameters:
+        ===========
             min_radius:
-                Minimum radius of the circle on top of the sphere."""
+                Minimum radius of the circle on top of the sphere.
+        
+        Examples:
+        =========
+        >>> sphere = Sphere()
+        >>> sphere.create()
+        >>> sphere.export('sphere.stl', 'sphere')
+        >>> sphere.visualize()
+        """
         self.circle_list = []
         self.latitude = np.linspace(-self.radius/1.0,
                                     self.radius/1.0, self.resoultion_longitude)
@@ -435,6 +446,7 @@ class Sphere(Shape):
 
     def export(self, filename, shapename):
         """
+
         Creates a stack of circles.
         """
         triangle_list = []
