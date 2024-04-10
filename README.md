@@ -15,6 +15,36 @@ PISTL can be used for the following purposes:
 - visualize this stl files. [PySTL uses pyvista for such visualizations].
 - perform simple transformations like translate, rotate and scale shapes.
 
+### Examples
+
+```python
+# This example creates a sphere stl using pistl
+
+# step 1.0: import PySTL
+from pistl import shapes
+
+#instantiate a sphere shape
+sphere = shapes.Sphere()
+
+# set the radius of the sphere
+sphere.radius = 10
+
+# set resolution of the sphere in longitude and latitude
+sphere.resolution_latitude = 200
+sphere.resoultion_longitude = 200
+
+# once you have set the radius and resolution, call create method
+sphere.create()
+
+# call export method to set stl filename and shape name
+sphere.export('Results/sphere.stl', 'sphere')
+
+# Finally visualize the shape in trame window or in a jupyter kernal using the visualize method.
+sphere.visualize().plot(color='magenta', text=f'{sphere.name}')
+```
+
+<p text-align="center"><img src=".\assets\sphere.PNG" alt="Pystl_generated_sphere_stl"></p>
+
 <u>PISTL is an open source project that welcomes contributions from developers from diverse community and backgrounds.\_</u>
 
 contact : sumanan047@gmail.com to get added on the project formally.
