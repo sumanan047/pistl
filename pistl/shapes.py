@@ -20,8 +20,17 @@ Module Content:
 
 
 class Shape(object):
-    """Base class for shapes.Provides a generic init and three methods
-    to create, visualize and export the shapes."""
+    """
+    Description:
+    ============
+    Base class for shapes.Provides a generic init and three methods
+    to create, export and visualize the shapes to be called in that order.
+
+    Users must follow the order:
+        1. Create the shape
+        2. export the shape
+        3. visualize the shape
+    """
 
     def __init__(self) -> None:
         self.x = None
@@ -37,12 +46,16 @@ class Shape(object):
         return None
 
     def export(self, filename: str, shapename: str):
-        """Exports the shape in desired format."""
+        """Exports the shape in desired format.(Right now only stl)"""
         # set the provided filename to be the exported shape
         self.filename = filename
         self.shapename = shapename
 
     def visualize(self):
+        """Set as a method but calls a utility function written in the utulities module.
+        It is written here for the context of using an object and then being able to visualize it
+        using a class method."""
+
         try:
             return utilities.visualize(filename=self.filename)
         except:
@@ -66,8 +79,27 @@ class Shape(object):
 class Circle(Shape):
     """
     Description:
-        Creates a 2D circle. 
-        Special cases can be used to generate rectangle and triangles.
+    ============
+    Creates a 2D circle. 
+    Special cases can be used to generate rectangle and triangles and other regular 2-D
+    polygons.
+
+    Attributes:
+    ===========
+    name:[str]
+        default set to "circle"
+    _center:[list]
+        defualt set to [0.0, 0.0]
+    _radius:[1.0]
+        default set to 1.0
+    dim:[float]
+        dimension of the shape. Don't change. This flags that this shape is 2D
+    _area:[float]
+        estimated parameter for query
+    _perimeter:[float]
+        estimated parameter for query
+    resolution:[int]
+        number of points in the 2D polygon, higher number gets smoother circle.
     """
 
     def __init__(self, *args, **kwargs) -> None:
@@ -100,11 +132,11 @@ class Circle(Shape):
         """
         Description:
         ============
-            Creates a circle with a constant z value.
+        Creates a circle with a constant z value.
 
         Parmeters:
         ==========
-            elevation: The z value or elevation of the circle. Default value is 0.0.
+        elevation: The z value or elevation of the circle. Default value is 0.0.
 
         Example:
         ========
@@ -122,15 +154,20 @@ class Circle(Shape):
         return super().visualize()
 
     def export(self, filename: str, shapename: str):
-        super().export(filename=filename, shapename=shapename)
+        # super().export(filename=filename, shapename=shapename)
         """
         Description:
-            Takes x and y cordinates from the circle function and generates a cricle stl of
-            desired resolution that has 0 elevation i.e. all z values are zero.
+        ============
+        Takes x and y cordinates from the circle function and generates a cricle stl of
+        desired resolution that has 0 elevation i.e. all z values are zero.
+
         Parameters:
-            filename: string filename of the .stl file
-            shapename: name of the object that is created
+        ===========
+        filename: string filename of the .stl file
+        shapename: name of the object that is created
+
         Example:
+        ========
         >>> circle=Cirle()
         >>> circle.radius = 2.0
         >>> circle.create()
@@ -152,14 +189,41 @@ class Circle(Shape):
 
 
 class Cylinder(Shape):
-    """Generates a cylinder for a height along the z-axis."""
+    """
+    Description:
+    ============
+    Generates a cylinder for a height along the z-axis.
+
+    Attributes:
+    ===========
+    name:[str]
+        default set to "Circle"
+    _base_circle_radius:[float]
+        defaults to 1.0
+    _base_circle_center:[list]
+        defaults to [0.0,0.0, 0.0]
+    _height:[float]
+        defulat to 1.0
+    _top_circle_radius:[float]
+        exactly the same as the base_circle_radius to keep cylindrical shape
+    _top_circle_center:[list]
+        estimated parameter based on base circle center and height of cylinder
+    _cylinder_center:[list]
+        estimated parameter
+    dim:[float]
+        3.0
+    resolution:[int]
+        10
+    close:[bool]
+        False (to create open top cyclinder)
+    """
 
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self.name = "Cylinder"
-        self._base_circle_radius = 1.00
+        self._base_circle_radius = 1.0
         self._base_circle_center = [0.0, 0.0, 0.0]
-        self._height = 1.00
+        self._height = 1.0
         self._top_circle_radius = self._base_circle_radius
         self._top_circle_center = [
             self._base_circle_center[0], self._base_circle_center[1], self._height]
@@ -251,11 +315,27 @@ class Cylinder(Shape):
 
 
 class Cuboid(Cylinder):
-    """Generates a cuboid using special case of a cylinder with changed parameters."""
+    """
+    Description:
+    ============
+    Generates a cuboid using special case of a cylinder with changed parameters.
+
+    Attributes:
+    ===========
+    name:[str]
+        Cuboid
+    _side_length:[float]
+        1.0
+    resolution:[int]
+        5 (to produce 4 sides)
+    close:[bool]
+        False (to produce open top cuboid)    
+    """
 
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
-        self._side_length = 1.00
+        self.name = "Cuboid"
+        self._side_length = 1.0
         self.resolution = 5
         self.close = False
 
@@ -284,8 +364,24 @@ class Cuboid(Cylinder):
 
 
 class Tetrahedron(Circle):
+    """
+    Description:
+    ============
+    Generates a Tetrahedron using special case of a Circle with changed parameters.
+
+    Attributes:
+    ===========
+    name:[str]
+        Tetrahedron
+    resolution:[int]
+        4 (to produce 3 sides and we pull one in center with higher elevation.
+    close:[bool]
+        True  
+    """
+
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
+        self.name = "Tetrahedron"
         self.resolution = 4
         self.close = True
 
@@ -320,8 +416,24 @@ class Tetrahedron(Circle):
 
 
 class Pyramid(Tetrahedron):
+    """
+    Description:
+    ============
+    Generates a Pyramid using special case of a Tetrahedron with changed parameters.
+
+    Attributes:
+    ===========
+    name:[str]
+        Pyramid
+    resolution:[int]
+        5 (to produce 4 sides and we pull one in center with higher elevation.
+    close:[bool]
+        True  
+    """
+
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
+        self.name = "Pyramid"
         self.resolution = 5
         self.close = False
 
@@ -368,9 +480,29 @@ class Pyramid(Tetrahedron):
 
 
 class Sphere(Shape):
+    """
+    Description:
+    ============
+    Generates a Sphere from base class Shapes.
+
+    Attributes:
+    ===========
+    name:[str]
+        Sphere
+    center:[list]
+        [0.0,0.0,0.0]
+    radius:[float]
+        1.0
+    resolution_longitudes:[int]
+        20 (resolutions on the circles that are being used to stitch the sphere)
+    resolution_latitudes:[int]  
+        20 (how many circles are being drawn to stitch the sphere, think of latitudes on earth)
+    """
+
     def __init__(self) -> None:
         super().__init__()
-        self.center = [0, 0, 0]
+        self.name = "Sphere"
+        self.center = [0.0, 0.0, 0.0]
         self.radius = 1.0
         self.resoultion_longitude = 20
         self.resolution_latitude = 20
@@ -400,12 +532,12 @@ class Sphere(Shape):
         Description:
         ============
             Creates the required circles of latitudes for the spheres.
-        
+
         Parameters:
         ===========
             min_radius:
                 Minimum radius of the circle on top of the sphere.
-        
+
         Examples:
         =========
         >>> sphere = Sphere()

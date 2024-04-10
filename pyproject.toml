@@ -16,7 +16,6 @@ keywords = ["stl", "3-D Shapes"]
 [tool.poetry.dependencies]
 python = "^3.10"
 numpy = "1.26.2"
-matplotlib = "3.8.2"
 pyvista = {version = ">=0.38.1", extras = ["jupyter"]}
 ipykernel = "6.27.1"
 trame = "3.3.0"
@@ -26,8 +25,9 @@ vtk = "9.3.0"
 pip = "24.0.0"
 
 [tool.poetry.dev-dependencies]
+matplotlib = "3.8.2"
 pytest = "7.4.3"
-coverage = "^7.3.2"
+coverage = "7.3.2"
 pythonocc-core = "7.7.2"
 
 [build-system]
