@@ -73,7 +73,6 @@ pandocfilters==1.5.1
 parso==0.8.4
 pexpect==4.9.0
 pillow==10.3.0
-pistl @ file:///Users/sudofr/Documents/Projects/pistl/dist/pistl-1.1.0.tar.gz#sha256=7b0894e4365478c6d159e5a5129c8dc32ea87fe5ea0cb517cf244010c8b7ae02
 pkginfo==1.10.0
 platformdirs==4.2.0
 poetry==1.8.2
