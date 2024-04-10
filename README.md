@@ -43,7 +43,7 @@ sphere.export('Results/sphere.stl', 'sphere')
 sphere.visualize().plot(color='magenta', text=f'{sphere.name}')
 ```
 
-<p text-align="center"><img src=".\assets\sphere.PNG" alt="Pystl_generated_sphere_stl"></p>
+<p text-align="center"><img src=".\assets\sphere.png" alt="Pystl_generated_sphere_stl"></p>
 
 <u>PISTL is an open source project that welcomes contributions from developers from diverse community and backgrounds.\_</u>
 
