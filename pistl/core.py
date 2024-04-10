@@ -1,18 +1,13 @@
 import numpy as np
 from . import utilities
 """
-### Core module contains funcition that can be used to translate, twist and deform the stl shapes
+### Core module contains funcitions that can be used to translate, 
+twist and deform the stl shapes
 
 array structure:
 np.array([normal, v1, v2, v3])..keep concatenating next triangles
 The shape should be:
     (4* number of triangles, 3)
-
-0. stl_to_array - done
-1. array_to_stl - done
-2. translate - done
-3. rotate - working
-4. scale
 """
 
 
@@ -181,26 +176,3 @@ def rotate(arr: np.ndarray, x_theta: float = 0.00, y_theta: float = 0.00, z_thet
     utilities.stl_writer("Results\\rotated_stl.stl",
                          'rotated_stl', rotated_triangles, normals)
     return None
-
-
-if __name__ == "__main__":
-    import glob
-    file_list = glob.glob('Results/*.stl')
-
-    # convert to numpy arrays from stls
-    arr_stl = []
-    for i, _ in enumerate(file_list):
-        try:
-            arr_stl.append(stl_to_array(file_list[i]))
-        except Exception as e:
-            print(f"Exception while converting stl to array: {e}")
-
-    # convert back from numpy array to stls
-    for arr in arr_stl:
-        pass
-    # print(arr_stl)
-    array_to_stl(arr=arr_stl[1], stl_name="stl_name_before_translate")
-    art = stl_to_array(stl='Results/stl_name_before_translate.stl')
-    trans_art = translate(arr=art, x_offset=1.00, y_offset=2.00, z_offset=1.00)
-    array_to_stl(arr=trans_art, stl_name="stl_name_after_translate")
-    rotate(art, 0, 90, 0)

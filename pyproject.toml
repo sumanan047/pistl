@@ -28,7 +28,7 @@ pip = "24.0.0"
 [tool.poetry.dev-dependencies]
 pytest = "7.4.3"
 coverage = "^7.3.2"
-pdoc = "^14.1.0"
+pythonocc-core = "7.7.2"
 
 [build-system]
 requires = ["poetry-core"]

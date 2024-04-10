@@ -1,4 +1,3 @@
-from fnmatch import translate
 import os
 from matplotlib.pylab import rand
 import numpy as np
@@ -50,7 +49,8 @@ def test_array_to_stl(make_circle_array):
 def test_translate():
     """Picks random points in the circle stl before and after and checks if translation
     happened by correct amount.
-    WARNING: created a deep copy because the translate method chnages the original array."""
+    WARNING: created a deep copy because the translate method chnages the original array.
+    TODO: This tests fails at random because of random being implemented. Needs improvement."""
     art = stl_to_array(stl='Results/circle.stl')
     art_copy = art.copy()
     trans_art = translate(arr=art, x_offset=1.00, y_offset=2.00, z_offset=1.00)
