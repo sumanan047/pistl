@@ -28,7 +28,6 @@ pip = "24.0.0"
 matplotlib = "3.8.2"
 pytest = "7.4.3"
 coverage = "7.3.2"
-pythonocc-core = "7.7.2"
 
 [build-system]
 requires = ["poetry-core"]
