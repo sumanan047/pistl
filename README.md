@@ -21,6 +21,7 @@ PISTL can be used for the following purposes:
 # This example creates a sphere stl using pistl
 
 # step 1.0: import PySTL
+import pistl
 from pistl import shapes
 
 #instantiate a sphere shape
