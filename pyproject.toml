@@ -3,7 +3,8 @@ name = "pistl"
 version = "1.2.0"
 description = "Python library to generate STL format files for common shapes and geometries."
 license = "MIT"
-authors = ["Suman Saurabh <sumanan047@gmail.com>"]
+authors = ["Suman Saurabh <sumanan047@gmail.com>",
+           "Brian Kocar <kocarba@gmail.com"]
 maintainers = [
     "Suman Saurabh <sumanan047@gmail.com>",
 ]
