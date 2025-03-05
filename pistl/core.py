@@ -114,7 +114,11 @@ def translate(arr: np.ndarray, x_offset: float = 0.00, y_offset: float = 0.00, z
     return arr
 
 
-def rotate(arr: np.ndarray, x_theta: float = 0.00, y_theta: float = 0.00, z_theta: float = 0.00):
+def rotate(arr: np.ndarray,
+           x_theta: float = 0.00,
+           y_theta: float = 0.00,
+           z_theta: float = 0.00,
+           filename='rotated.stl'):
     """
     Description:
         Rotates the stl file around the angles x_theta, y_theta and z_theta.
@@ -173,6 +177,6 @@ def rotate(arr: np.ndarray, x_theta: float = 0.00, y_theta: float = 0.00, z_thet
         n = utilities.find_normal(
             rotated_point_1, rotated_point_2, rotated_point_3)
         normals.append(n)
-    utilities.stl_writer("Results\\rotated_stl.stl",
-                         'rotated_stl', rotated_triangles, normals)
+    utilities.stl_writer(f"{filename}",
+                         f'{filename}', rotated_triangles, normals)
     return None
