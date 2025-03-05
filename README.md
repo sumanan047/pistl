@@ -22,7 +22,7 @@ PISTL can be used for the following purposes:
 - visualize this stl files. [PySTL uses pyvista for such visualizations].
 - perform simple transformations like translate, rotate and scale shapes.
 
-### Examples
+### Examples - 1
 
 ```python
 # This example creates a sphere stl using pistl
@@ -52,5 +52,27 @@ sphere.visualize().plot(color='magenta', text=f'{sphere.name}')
 ```
 
 ![Pystl_generated_sphere_stl](./assets/sphere.png)
+
+### Examples - 2
+
+```python
+# cylinder
+# step 1.0: create a cylinder object
+cyl = shapes.Cylinder()
+# step 2.0: Set appropriate properties on the object
+cyl._height = 10.00
+cyl._top_circle_radius = 4.00
+cyl._base_circle_radius = 4.00
+cyl.resolution = 20
+cyl.close = True
+# step 3.0: call create method on the object
+cyl.create()
+# step 4.0: call export method to write the stl file
+cyl.export('Results/cyl.stl', 'cyl')
+# step 5.0 Call the visualize method to plot using pyvista
+cyl.visualize().plot(text=f'{cyl.name}')
+```
+
+![Pystl_generated_cylinder_stl](./assets/cylinder.png)
 
 **PISTL is an open source project that welcomes contributions from developers from diverse community and backgrounds.**
