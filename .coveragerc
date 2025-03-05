@@ -1,0 +1,3 @@
+# FILEPATH: /Users/sudofr/Documents/Projects/Coding/pistl/.coveragerc
+[run]
+omit = */__init__.py, pistl/converter.py
