@@ -7,8 +7,9 @@
 /.vscode
 .coverage
 # ignore the build files
-*.lock
 *.whl
 *.gz
 # ignore coverage and other docs
 /htmlcov/
+.venv
+.idea
