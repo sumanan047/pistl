@@ -24,6 +24,33 @@ PISTL can be used for the following purposes:
 
 ### Examples
 
+```python
+# This example creates a sphere stl using pistl
+
+# step 1.0: import PySTL
+import pistl
+from pistl import shapes
+
+#instantiate a sphere shape
+sphere = shapes.Sphere()
+
+# set the radius of the sphere
+sphere.radius = 10
+
+# set resolution of the sphere in longitude and latitude
+sphere.resolution_latitude = 200
+sphere.resoultion_longitude = 200
+
+# once you have set the radius and resolution, call create method
+sphere.create()
+
+# call export method to set stl filename and shape name
+sphere.export('Results/sphere.stl', 'sphere')
+
+# Finally visualize the shape in trame window or in a jupyter kernal using the visualize method.
+sphere.visualize().plot(color='magenta', text=f'{sphere.name}')
+```
+
 ![Pystl_generated_sphere_stl](./assets/sphere.png)
 
 **PISTL is an open source project that welcomes contributions from developers from diverse community and backgrounds.**
