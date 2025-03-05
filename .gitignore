@@ -12,4 +12,3 @@
 *.gz
 # ignore coverage and other docs
 /htmlcov/
-cylinder.png
